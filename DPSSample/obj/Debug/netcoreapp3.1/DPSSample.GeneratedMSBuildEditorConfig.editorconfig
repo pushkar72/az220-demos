@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = Microsoft.Azure.Devices.Provisioning.Client.Samples
+build_property.ProjectDir = C:\tech\AZ220Course\DPS\DPSSample\
