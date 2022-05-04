@@ -10,10 +10,11 @@ namespace CaveDevice
         // Contains methods that a device can use to send messages to and receive from an IoT Hub.
         private static DeviceClient deviceClient;
 
-        private readonly static string connectionString = "HostName=iot-az-220-pj020522.azure-devices.net;DeviceId=sensor-th-0001;SharedAccessKey=ImZvu/gxN1N7PlnmmXxnvNoMDR2U3+3Fcoj0i+8moYE=";
+        private readonly static string connectionString = "HostName=iot-az-220-pj020522.azure-devices.net;DeviceId=sensor-iot-001;SharedAccessKey=mYCeWCmHoPZ3cEVzQBX3GFUhRVoUzplSjUGl0kzheI0=";
         private static void Main(string[] args)
         {
             Console.WriteLine("IoT Hub C# Simulated Cave Device. Ctrl-C to exit.\n");
+            //enroll with dps
 
             // Connect to the IoT hub using the MQTT protocol
             deviceClient = DeviceClient.CreateFromConnectionString(connectionString, TransportType.Mqtt);
@@ -34,13 +35,11 @@ namespace CaveDevice
                 var messageString = CreateMessageString(currentTemperature, currentHumidity);
 
                
-                var message = new Message(Encoding.ASCII.GetBytes(messageString));
-
-             
-                message.Properties.Add("temperatureAlert", (currentTemperature > 30) ? "true" : "false");
+                var message = new Message(Encoding.ASCII.GetBytes(messageString));    
+                ///filter generated data with query         
+                message.Properties.Add("temperatureAlert", (currentTemperature > 30) ? "true" : "false");         
                 message.ContentType="application/json";
                 message.ContentEncoding="utf-8";
-               
 
                 // Send the telemetry message
                 await deviceClient.SendEventAsync(message);
@@ -55,9 +54,10 @@ namespace CaveDevice
             var telemetryDataPoint = new
             {
                 temperature = temperature,
-                humidity = humidity
+                humidity = humidity,
+                time=DateTime.Now
             };
-
+            //https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2F1.2.0%2FedgeDeploy.json
             // Create a JSON string from the anonymous object
             return JsonConvert.SerializeObject(telemetryDataPoint);
         }

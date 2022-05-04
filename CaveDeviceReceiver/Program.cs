@@ -10,7 +10,7 @@ namespace CaveDeviceReceiver
     class Program
     {
         private static DeviceClient deviceClient;
-        private readonly static string connectionString = "HostName=iot-az-220-pj020522.azure-devices.net;DeviceId=sensor-th-0001;SharedAccessKey=ImZvu/gxN1N7PlnmmXxnvNoMDR2U3+3Fcoj0i+8moYE=";
+        private readonly static string connectionString = "HostName=iot-az-220-pj020522.azure-devices.net;DeviceId=iot-pushkar-useast-warehouse-temp;SharedAccessKey=PwXln8vS7VIPkjhuP0WCy/C4R9pT86iorXfer99eHQM=";
         private readonly static string connectionString2 = "HostName=iot-az-220-pj020522.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=ZuzI0VC6bxFjmcKmbhIL0kvoj14197d68G5F9YDUHso=";
         private static void Main(string[] args)
         {
@@ -45,7 +45,7 @@ namespace CaveDeviceReceiver
             Console.WriteLine("Press Enter to Send Message");
             Console.ReadLine();
             ServiceClient serviceClient = ServiceClient.CreateFromConnectionString(connectionString2);
-            string targetDevice = "sensor-th-0001";
+            string targetDevice = "iot-pushkar-useast-warehouse-temp";
             var commandMessage = new Microsoft.Azure.Devices.Message(Encoding.ASCII.GetBytes("Cloud to device message."));
             await serviceClient.SendAsync(targetDevice, commandMessage);
         }

@@ -12,11 +12,11 @@ namespace AzCourse.DPS.Sample
     internal class DPSGroupSample
     {
         // Change the following consts to connect to the DPS
-        const string PRIMARY_KEY = @"{PASTE HERE THE GROUP PRIMARY KEY}";
-        const string ID_SCOPE = "{PASTE HERE THE ID SCOPE OF THE DPS";
+        const string PRIMARY_KEY = @"pRpWQtJxfQG6PYZLY89baedp/dhSUZHFyZ/pcQF9M0gJKfGGdjCVOTxUqmtTI1jgesEK/AEBF8tC40f4b2PaBw==";
+        const string ID_SCOPE = "0ne005C7471";
 
         // The following consts should not be changed
-        const string DESIRED_DEVICE_ID = "dev-group-1";
+        const string DESIRED_DEVICE_ID = "weather-device-delhi";
         const string GLOBAL_ENDPOINT = "global.azure-devices-provisioning.net";
 
         public async Task RunSampleAsync()
@@ -44,6 +44,7 @@ namespace AzCourse.DPS.Sample
             try
             {
                 DeviceRegistrationResult result = await provClient.RegisterAsync();
+                
                 
                 if (result.Status != ProvisioningRegistrationStatusType.Assigned)
                 {

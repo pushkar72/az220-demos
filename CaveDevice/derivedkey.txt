@@ -1,0 +1,8 @@
+$KEY='feZMltb5izjvKNKKnSf3QfbxiMCVhuMr6C4xLUKVE+65fFskmfS+cpD0dRKLKalibIP4KDZdBQnYjMtFD57k1Q=='
+$REG_ID='edge-registration'
+
+$hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
+$hmacsha256.key = [Convert]::FromBase64String($KEY)
+$sig = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID))
+$derivedkey = [Convert]::ToBase64String($sig)
+echo "`n$derivedkey`n"
