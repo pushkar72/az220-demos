@@ -1,0 +1,39 @@
+C:\Users\memil\OneDrive - Ivri\MemiWebSite\Courses\Advanced Azure Services\Resources\DemoApps\DeviceTwinBackend\bin\Debug\netcoreapp3.1\DeviceTwinBackend.exe
+C:\Users\memil\OneDrive - Ivri\MemiWebSite\Courses\Advanced Azure Services\Resources\DemoApps\DeviceTwinBackend\bin\Debug\netcoreapp3.1\DeviceTwinBackend.deps.json
+C:\Users\memil\OneDrive - Ivri\MemiWebSite\Courses\Advanced Azure Services\Resources\DemoApps\DeviceTwinBackend\bin\Debug\netcoreapp3.1\DeviceTwinBackend.runtimeconfig.json
+C:\Users\memil\OneDrive - Ivri\MemiWebSite\Courses\Advanced Azure Services\Resources\DemoApps\DeviceTwinBackend\bin\Debug\netcoreapp3.1\DeviceTwinBackend.runtimeconfig.dev.json
+C:\Users\memil\OneDrive - Ivri\MemiWebSite\Courses\Advanced Azure Services\Resources\DemoApps\DeviceTwinBackend\bin\Debug\netcoreapp3.1\DeviceTwinBackend.dll
+C:\Users\memil\OneDrive - Ivri\MemiWebSite\Courses\Advanced Azure Services\Resources\DemoApps\DeviceTwinBackend\bin\Debug\netcoreapp3.1\DeviceTwinBackend.pdb
+C:\Users\memil\OneDrive - Ivri\MemiWebSite\Courses\Advanced Azure Services\Resources\DemoApps\DeviceTwinBackend\bin\Debug\netcoreapp3.1\Microsoft.Azure.Amqp.dll
+C:\Users\memil\OneDrive - Ivri\MemiWebSite\Courses\Advanced Azure Services\Resources\DemoApps\DeviceTwinBackend\bin\Debug\netcoreapp3.1\Microsoft.Azure.Devices.dll
+C:\Users\memil\OneDrive - Ivri\MemiWebSite\Courses\Advanced Azure Services\Resources\DemoApps\DeviceTwinBackend\bin\Debug\netcoreapp3.1\Microsoft.Azure.Devices.Shared.dll
+C:\Users\memil\OneDrive - Ivri\MemiWebSite\Courses\Advanced Azure Services\Resources\DemoApps\DeviceTwinBackend\bin\Debug\netcoreapp3.1\Microsoft.Rest.ClientRuntime.dll
+C:\Users\memil\OneDrive - Ivri\MemiWebSite\Courses\Advanced Azure Services\Resources\DemoApps\DeviceTwinBackend\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\memil\OneDrive - Ivri\MemiWebSite\Courses\Advanced Azure Services\Resources\DemoApps\DeviceTwinBackend\obj\Debug\netcoreapp3.1\DeviceTwinBackend.csprojAssemblyReference.cache
+C:\Users\memil\OneDrive - Ivri\MemiWebSite\Courses\Advanced Azure Services\Resources\DemoApps\DeviceTwinBackend\obj\Debug\netcoreapp3.1\DeviceTwinBackend.AssemblyInfoInputs.cache
+C:\Users\memil\OneDrive - Ivri\MemiWebSite\Courses\Advanced Azure Services\Resources\DemoApps\DeviceTwinBackend\obj\Debug\netcoreapp3.1\DeviceTwinBackend.AssemblyInfo.cs
+C:\Users\memil\OneDrive - Ivri\MemiWebSite\Courses\Advanced Azure Services\Resources\DemoApps\DeviceTwinBackend\obj\Debug\netcoreapp3.1\DeviceTwinBackend.csproj.CoreCompileInputs.cache
+C:\Users\memil\OneDrive - Ivri\MemiWebSite\Courses\Advanced Azure Services\Resources\DemoApps\DeviceTwinBackend\obj\Debug\netcoreapp3.1\DeviceTwinBackend.csproj.CopyComplete
+C:\Users\memil\OneDrive - Ivri\MemiWebSite\Courses\Advanced Azure Services\Resources\DemoApps\DeviceTwinBackend\obj\Debug\netcoreapp3.1\DeviceTwinBackend.dll
+C:\Users\memil\OneDrive - Ivri\MemiWebSite\Courses\Advanced Azure Services\Resources\DemoApps\DeviceTwinBackend\obj\Debug\netcoreapp3.1\DeviceTwinBackend.pdb
+C:\Users\memil\OneDrive - Ivri\MemiWebSite\Courses\Advanced Azure Services\Resources\DemoApps\DeviceTwinBackend\obj\Debug\netcoreapp3.1\DeviceTwinBackend.genruntimeconfig.cache
+C:\tech\AZ220Course\DeviceTwinBackend\bin\Debug\netcoreapp3.1\DeviceTwinBackend.exe
+C:\tech\AZ220Course\DeviceTwinBackend\bin\Debug\netcoreapp3.1\DeviceTwinBackend.deps.json
+C:\tech\AZ220Course\DeviceTwinBackend\bin\Debug\netcoreapp3.1\DeviceTwinBackend.runtimeconfig.json
+C:\tech\AZ220Course\DeviceTwinBackend\bin\Debug\netcoreapp3.1\DeviceTwinBackend.runtimeconfig.dev.json
+C:\tech\AZ220Course\DeviceTwinBackend\bin\Debug\netcoreapp3.1\DeviceTwinBackend.dll
+C:\tech\AZ220Course\DeviceTwinBackend\bin\Debug\netcoreapp3.1\DeviceTwinBackend.pdb
+C:\tech\AZ220Course\DeviceTwinBackend\bin\Debug\netcoreapp3.1\Microsoft.Azure.Amqp.dll
+C:\tech\AZ220Course\DeviceTwinBackend\bin\Debug\netcoreapp3.1\Microsoft.Azure.Devices.dll
+C:\tech\AZ220Course\DeviceTwinBackend\bin\Debug\netcoreapp3.1\Microsoft.Azure.Devices.Shared.dll
+C:\tech\AZ220Course\DeviceTwinBackend\bin\Debug\netcoreapp3.1\Microsoft.Rest.ClientRuntime.dll
+C:\tech\AZ220Course\DeviceTwinBackend\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\tech\AZ220Course\DeviceTwinBackend\obj\Debug\netcoreapp3.1\DeviceTwinBackend.csproj.AssemblyReference.cache
+C:\tech\AZ220Course\DeviceTwinBackend\obj\Debug\netcoreapp3.1\DeviceTwinBackend.GeneratedMSBuildEditorConfig.editorconfig
+C:\tech\AZ220Course\DeviceTwinBackend\obj\Debug\netcoreapp3.1\DeviceTwinBackend.AssemblyInfoInputs.cache
+C:\tech\AZ220Course\DeviceTwinBackend\obj\Debug\netcoreapp3.1\DeviceTwinBackend.AssemblyInfo.cs
+C:\tech\AZ220Course\DeviceTwinBackend\obj\Debug\netcoreapp3.1\DeviceTwinBackend.csproj.CoreCompileInputs.cache
+C:\tech\AZ220Course\DeviceTwinBackend\obj\Debug\netcoreapp3.1\DeviceTwinBackend.csproj.CopyComplete
+C:\tech\AZ220Course\DeviceTwinBackend\obj\Debug\netcoreapp3.1\DeviceTwinBackend.dll
+C:\tech\AZ220Course\DeviceTwinBackend\obj\Debug\netcoreapp3.1\DeviceTwinBackend.pdb
+C:\tech\AZ220Course\DeviceTwinBackend\obj\Debug\netcoreapp3.1\DeviceTwinBackend.genruntimeconfig.cache

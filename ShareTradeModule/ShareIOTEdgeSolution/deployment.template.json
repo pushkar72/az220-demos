@@ -76,7 +76,7 @@
         "schemaVersion": "1.1",
         "routes": {
           "APSPriceModuleToIoTHub": "FROM /messages/modules/APSPriceModule/outputs/* INTO $upstream",
-          "sensorToAPSPriceModule": "FROM /messages/modules/APSPriceModule/outputs/output1 INTO BrokeredEndpoint(\"/modules/APSPriceModule/inputs/input1\")"
+          "sensorToAPSPriceModule": "FROM /messages/modules/APSPriceModule/outputs/tradeEvent INTO BrokeredEndpoint(\"/modules/APSPriceModule/inputs/input1\")"
         },
         "storeAndForwardConfiguration": {
           "timeToLiveSecs": 7200

@@ -10,9 +10,9 @@ namespace APSPriceModule
     using System.Threading.Tasks;
     using Microsoft.Azure.Devices.Client;
     using Microsoft.Azure.Devices.Client.Transport.Mqtt;
-    using System.Collections.Generic;     // For KeyValuePair<>
-    using Microsoft.Azure.Devices.Shared; // For TwinCollection
-    using Newtonsoft.Json;                // For JsonConvert
+    using System.Collections.Generic;     
+    using Microsoft.Azure.Devices.Shared; 
+    using Newtonsoft.Json;                
 
     class Trade
     {
@@ -24,7 +24,7 @@ namespace APSPriceModule
     class Program
     {
         static int counter;
-        static int TradePrice {get;set;}=23;
+        static int TradePrice {get;set;}
         static readonly Random rnd=new Random();
 
         static void Main(string[] args)
@@ -52,7 +52,7 @@ namespace APSPriceModule
         static async Task SendMessage(ModuleClient mclient,string message)
         {
                 var sevent=new Message(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(message)));
-                await mclient.SendEventAsync("output1",sevent);
+                await mclient.SendEventAsync("tradeEvent",sevent);
         }
         static async Task SendTradeEvent(ModuleClient client)
         {
@@ -63,7 +63,7 @@ namespace APSPriceModule
                 tdata.Price=rnd.Next(21,80);
                 
                 var trademessage=new Message(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(tdata)));
-                await client.SendEventAsync("output1",trademessage);
+                await client.SendEventAsync("tradeEvent",trademessage);
                 await Task.Delay(500);
             }
         }
