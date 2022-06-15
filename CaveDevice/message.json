@@ -1,0 +1,15 @@
+{
+  "temperature": 22.182885645394368,
+  "humidity": 72.815577689695218,
+  "time": "2022-06-14T20:39:35.5740887+05:30",
+  "EventProcessedUtcTime": "2022-06-14T15:10:43.4090351Z",
+  "PartitionId": 2,
+  "EventEnqueuedUtcTime": "2022-06-14T15:09:37.3250000Z",
+  "IoTHub": {
+    "MessageId": null,
+    "CorrelationId": null,
+    "ConnectionDeviceId": "cavetemp-device5454",
+    "ConnectionDeviceGenerationId": "637907361772058103",
+    "EnqueuedTime": "2022-06-14T15:09:37.1840000Z"
+  }
+}

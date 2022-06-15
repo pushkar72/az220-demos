@@ -1,0 +1,12 @@
+{
+    "profiles": {
+        "EdgeDownstreamDevice": {
+            "commandName": "Project",
+            "environmentVariables": {
+                "DEVICE_CONNECTION_STRING": "{PASTE THE CONNECTION STRING TO THE GATEWAY HERE}",
+                "IOTEDGE_TRUSTED_CA_CERTIFICATE_PEM_PATH": "",
+                "MESSAGE_COUNT": "10"
+            }
+        }
+    }
+}
