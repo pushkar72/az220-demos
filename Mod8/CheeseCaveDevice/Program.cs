@@ -1,4 +1,4 @@
-﻿
+﻿//HostName=iot-az-220-pj020522.azure-devices.net;DeviceId=sensor-th-0072;SharedAccessKey=pNrgIdK0CKHUY9uLpCE6AwkVUfu/0VIihq8+VCnbvmc=
 
 using System;
 using Microsoft.Azure.Devices.Client;

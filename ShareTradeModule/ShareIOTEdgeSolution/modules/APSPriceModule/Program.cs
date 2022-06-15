@@ -23,7 +23,7 @@ namespace APSPriceModule
     }
     class Program
     {
-        static int counter;
+
         static int TradePrice {get;set;}
         static readonly Random rnd=new Random();
 

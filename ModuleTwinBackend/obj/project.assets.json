@@ -3057,31 +3057,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\memil\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\Pushkar11\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\tech\\AZ220Course\\DeviceTwinBackend\\DeviceTwinBackend.csproj",
-      "projectName": "DeviceTwinBackend",
-      "projectPath": "C:\\tech\\AZ220Course\\DeviceTwinBackend\\DeviceTwinBackend.csproj",
-      "packagesPath": "C:\\Users\\memil\\.nuget\\packages\\",
-      "outputPath": "C:\\tech\\AZ220Course\\DeviceTwinBackend\\obj\\",
+      "projectUniqueName": "C:\\Users\\Pushkar11\\Downloads\\demos\\AZ220\\ModuleTwinBackend\\ModuleTwinBackend.csproj",
+      "projectName": "ModuleTwinBackend",
+      "projectPath": "C:\\Users\\Pushkar11\\Downloads\\demos\\AZ220\\ModuleTwinBackend\\ModuleTwinBackend.csproj",
+      "packagesPath": "C:\\Users\\Pushkar11\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Pushkar11\\Downloads\\demos\\AZ220\\ModuleTwinBackend\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\memil\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\Pushkar11\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3115,12 +3108,18 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[3.1.21, 3.1.21]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

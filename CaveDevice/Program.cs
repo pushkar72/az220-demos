@@ -10,7 +10,7 @@ namespace CaveDevice
         // Contains methods that a device can use to send messages to and receive from an IoT Hub.
         private static DeviceClient deviceClient;
 
-        private readonly static string connectionString = "HostName=iot-az-220-pj020522.azure-devices.net;DeviceId=sensor-iot-001;SharedAccessKey=mYCeWCmHoPZ3cEVzQBX3GFUhRVoUzplSjUGl0kzheI0=";
+        private readonly static string connectionString = "HostName=iot-hub-az220-pj130622.azure-devices.net;DeviceId=cavetemp-device5454;SharedAccessKey=OSWvB/xkXYcpEdC38Y7l9E+hsLL/UEmY5O3cTpJhzMs=";
         private static void Main(string[] args)
         {
             Console.WriteLine("IoT Hub C# Simulated Cave Device. Ctrl-C to exit.\n");
@@ -19,6 +19,7 @@ namespace CaveDevice
             // Connect to the IoT hub using the MQTT protocol
             deviceClient = DeviceClient.CreateFromConnectionString(connectionString, TransportType.Mqtt);
             SendDeviceToCloudMessagesAsync();
+            ReceiveC2dAsync();
             Console.ReadLine();
         }
         private static async void SendDeviceToCloudMessagesAsync()
@@ -28,34 +29,44 @@ namespace CaveDevice
 
             while (true)
             {
-           
+
                 var currentTemperature = sensor.ReadTemperature();
                 var currentHumidity = sensor.ReadHumidity();
 
                 var messageString = CreateMessageString(currentTemperature, currentHumidity);
 
-               
-                var message = new Message(Encoding.ASCII.GetBytes(messageString));    
+
+                var message = new Message(Encoding.ASCII.GetBytes(messageString));
                 ///filter generated data with query         
-                message.Properties.Add("temperatureAlert", (currentTemperature > 30) ? "true" : "false");         
-                message.ContentType="application/json";
-                message.ContentEncoding="utf-8";
+                message.Properties.Add("temperatureAlert", (currentTemperature > 30) ? "true" : "false");
+                if (currentTemperature > 30)
+                {
+                    message.Properties.Add("path", "warm");
+                    message.Properties.Add("severity", "5");
+                }
+                message.Properties.Add("timestamp", GetTimestamp(DateTime.Now));
+                message.ContentType = "application/json";
+                message.ContentEncoding = "utf-8";
 
                 // Send the telemetry message
                 await deviceClient.SendEventAsync(message);
-                Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, messageString);
+                Console.WriteLine("{0} > Sending message: {1}", GetTimestamp(DateTime.Now), messageString);
 
-                await Task.Delay(500);
+                await Task.Delay(300);
             }
+        }
+        public static String GetTimestamp(DateTime value)
+        {
+            return value.ToString("yyyyMMddHHmmssffff");
         }
         private static string CreateMessageString(double temperature, double humidity)
         {
-         
+
             var telemetryDataPoint = new
             {
                 temperature = temperature,
                 humidity = humidity,
-                time=DateTime.Now
+                time = DateTime.Now
             };
             //https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2F1.2.0%2FedgeDeploy.json
             // Create a JSON string from the anonymous object

@@ -12,8 +12,8 @@ namespace AzCourse.DPS.Sample
     internal class DPSGroupSample
     {
         // Change the following consts to connect to the DPS
-        const string PRIMARY_KEY = @"pRpWQtJxfQG6PYZLY89baedp/dhSUZHFyZ/pcQF9M0gJKfGGdjCVOTxUqmtTI1jgesEK/AEBF8tC40f4b2PaBw==";
-        const string ID_SCOPE = "0ne005C7471";
+        const string PRIMARY_KEY = @"";
+        const string ID_SCOPE = "0ne00652E39";
 
         // The following consts should not be changed
         const string DESIRED_DEVICE_ID = "weather-device-delhi";

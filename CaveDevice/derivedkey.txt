@@ -1,8 +1,16 @@
-$KEY='feZMltb5izjvKNKKnSf3QfbxiMCVhuMr6C4xLUKVE+65fFskmfS+cpD0dRKLKalibIP4KDZdBQnYjMtFD57k1Q=='
-$REG_ID='edge-registration'
+$KEY='4jme4HRP1PqC6s8eaIwu/rdD5GoczHsfB084Abg2BDHBV2q95h4KBJ0VjOly2z7SW4p+QaF68A50gfZHD9Yh+w=='
+$REG_ID='iotedge-gw-device'
 
 $hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
 $hmacsha256.key = [Convert]::FromBase64String($KEY)
 $sig = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID))
 $derivedkey = [Convert]::ToBase64String($sig)
 echo "`n$derivedkey`n"
+
+
+PIa5vZcoF6IEn8h+hxqNMM+XJ39NGy6BcSOuCSX/wfo=
+TestPa55.w0rd
+
+
+
+HostName=iot-hub-az220-pj130622.azure-devices.net;DeviceId=leaft-device;SharedAccessKey=SxOuz0I62U62QDrIURW3jmPf2Gyi6nUDaupJ0rEqXB8=;GatewayHostName=iot-edge-device.eastus.cloudapp.azure.com
