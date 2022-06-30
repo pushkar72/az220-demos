@@ -1,7 +1,7 @@
 {
   "IsEncrypted": "false",
   "Values": {
-    "ADT_SERVICE_URL": "",
+    "ADT_SERVICE_URL": "az200dtwinspj.api.eus.digitaltwins.azure.net",
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet"
   }

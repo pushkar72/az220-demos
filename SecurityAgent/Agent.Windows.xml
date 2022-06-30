@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Agent.Windows</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Azure.IoT.Agent.Windows.AgentService">
+            <summary>
+            The designer part of the AgentService class
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Windows.AgentService.#ctor(System.String)">
+            <summary>
+            ctor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Windows.AgentService.OnDebug">
+            <summary>
+            Called when the project was built in debug configuration, this is for development purposes
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Windows.AgentService.OnStart(System.String[])">
+            <summary>
+            Called when the service is attempting to start, this method must bring up a new thread an return
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Windows.AgentService.OnStop">
+            <summary>
+            Called when the service is attempting to stop, this must cleanup and return
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Windows.AgentService.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Windows.AgentService.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Windows.AgentService.InitializeComponent(System.String)">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Windows.CommandLineArguments">
+            <summary>
+            Contains the supported list of command-line arguments
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Windows.CommandLineArguments.StandaloneMode">
+            <summary>
+            The fixed name of the argument that will cause the agent to execute in standalone mode
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Windows.Program">
+            <summary>
+            The agent main entry point
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Windows.Program.Main(System.String[])">
+            <summary>
+            The main function of the agent
+            </summary>
+            <param name="args">command line arguments</param>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Windows.WindowsAgentExecutionMode">
+            <summary>
+            Represents the agent's supported exeuction modes
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Windows.WindowsAgentExecutionMode.Standalone">
+            <summary>
+            The agent executes as a standalone process
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Windows.WindowsAgentExecutionMode.Service">
+            <summary>
+            The agent executes as a Windows Service
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Windows.WindowsAgentRunner">
+            <summary>
+            Entry point for starting the agent on a Windows environment. Either as a service or a standalone process
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Windows.WindowsAgentRunner.Run(Microsoft.Azure.IoT.Agent.Windows.WindowsAgentExecutionMode,System.String)">
+            <summary>
+            Starts running the agent
+            </summary>
+            <param name="exeuctionMode">The execution mode in which the agent should operate</param>
+            <param name="serviceName">The name of the service</param>
+        </member>
+    </members>
+</doc>

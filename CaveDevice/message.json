@@ -1,15 +1,20 @@
 {
-  "temperature": 22.182885645394368,
-  "humidity": 72.815577689695218,
-  "time": "2022-06-14T20:39:35.5740887+05:30",
-  "EventProcessedUtcTime": "2022-06-14T15:10:43.4090351Z",
-  "PartitionId": 2,
-  "EventEnqueuedUtcTime": "2022-06-14T15:09:37.3250000Z",
-  "IoTHub": {
-    "MessageId": null,
-    "CorrelationId": null,
-    "ConnectionDeviceId": "cavetemp-device5454",
-    "ConnectionDeviceGenerationId": "637907361772058103",
-    "EnqueuedTime": "2022-06-14T15:09:37.1840000Z"
+  "EnqueuedTimeUtc": "2022-06-27T17:19:49.9790000Z",
+  "Properties": {
+    "temperatureAlert": "false",
+    "timestamp": "202206272249464833"
+  },
+  "SystemProperties": {
+    "connectionDeviceId": "cave-temp-01",
+    "connectionAuthMethod": "{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
+    "connectionDeviceGenerationId": "637919079496175639",
+    "contentType": "application/json",
+    "contentEncoding": "utf-8",
+    "enqueuedTime": "2022-06-27T17:19:49.9790000Z"
+  },
+  "Body": {
+    "temperature": 25.131865383555713,
+    "humidity": 61.416224950320704,
+    "time": "2022-06-27T22:49:46.483313+05:30"
   }
 }

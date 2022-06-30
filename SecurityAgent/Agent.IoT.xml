@@ -1,0 +1,859 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Agent.IoT</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData">
+            <summary>
+            AuthenticationData holds the required information for authentication 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData.Identity">
+            <summary>
+            The identity from which we would extract the authentication information if the module
+            Identity could be the Device or the Module itself
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData.Type">
+            <summary>
+            The authentication type e.g. certificate/sas token
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData.CertificateLocation">
+            <summary>
+            Specifies where the certificate should be loaded from (Local/Store)
+            Relevant only when <see cref="P:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData.Type"/> is set to <see cref="F:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProvider.AuthenticationType.SelfSignedCertificate"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData.FilePath">
+            <summary>
+            The file path to the required data of the AuthenticationType
+            The file might contains for example the certificate (for certificate Type) or the connection string (for Sas token Type)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData.DeviceId">
+            <summary>
+            The device Id of the Module
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData.ModuleName">
+            <summary>
+            Gets the name of the module the agent is interacting with
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData.CertificateLocationKindKey">
+            <summary>
+            The fixed name of the CertificateLocation key
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData.GatewayHostName">
+            <summary>
+            The FQDN of the gateway e.g. iotTestHub.azure.net
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData.IdScope">
+            <summary>
+            The ID Scope of the DPS service
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData.RegistrationId">
+            <summary>
+            The registration ID of the device, as specified in the DPS
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData.FilePathKey">
+            <summary>
+            The fixed name of the FilePath key
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData.DeviceIdKey">
+            <summary>
+            The fixed name of the DeviceId key
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData.GatewayHostNameKey">
+            <summary>
+            The fixed name of the Gateway key
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData.IdentityKey">
+            <summary>
+            The fixed name of the Identity key
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData.TypeKey">
+            <summary>
+            The fixed name of the Type key
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData.ModuleNameKey">
+            <summary>
+            The fixed name of the ModuleName key
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData.IdScopeKey">
+            <summary>
+            The fixed name of the IdScope key
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData.RegistrationIdKey">
+            <summary>
+            The fixed name of the RegistrationId key
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData.#ctor(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Constructor that is initialized from a given configuration 
+            </summary>
+            <param name="nameValueCollection">nameValueCollection represents the user configuration</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData.#ctor(Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData)">
+            <summary>
+            Copy C-tor
+            </summary>
+            <param name="authenticationData">The AuthenticationData object to copy</param>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationFileUtils">
+            <summary>
+            File utilities for Authentication classes
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationFileUtils.GetBase64EncodedSymmetricKeyFromFile(System.String)">
+            <summary>
+            Read a symmetric key string from a given file
+            </summary>
+            <param name="filePath">file path for the symmetric key</param>
+            <returns>Symmetric key as it was provided in the File Path</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">In case the file is empty</exception>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationFileUtils.GetFileContent(System.String)">
+            <summary>
+            Gets the contents of the given file as a string
+            </summary>
+            <param name="filePath">a path to the file</param>
+            <returns>file content as string</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationFileUtils.GetBinaryFileContent(System.String)">
+            <summary>
+            Gets the contents of the given file as a byte array
+            </summary>
+            <param name="filePath">a path to the file</param>
+            <returns>file content</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProvider">
+            <summary>
+            This class provides the authentication method and the corresponding information
+            for the authentication of the Module
+            Currently the only authentication method supported by the Module is by SymmetricKey (SAS token)
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProvider.AuthenticationType">
+            <summary>
+            Supported authentication types
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProvider.AuthenticationType.SymmetricKey">
+            <summary>
+            SaS token using SymmetricKey
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProvider.AuthenticationType.SelfSignedCertificate">
+            <summary>
+            Self signed certificate
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProvider.AuthenticationIdentity">
+            <summary>
+            The identity that provides the authentication information
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProvider.AuthenticationIdentity.DPS">
+            <summary>
+            The DPS will provide the authentication information for the module
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProvider.AuthenticationIdentity.Device">
+            <summary>
+            The device will provide the authentication information for the module
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProvider.AuthenticationIdentity.Module">
+            <summary>
+            The Module itself provides the authentication information
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProvider.CertificateLocation">
+            <summary>
+            The location from which the certificate will be loaded
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProvider.CertificateLocation.LocalFile">
+            <summary>
+            Local file
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProvider.CertificateLocation.Store">
+            <summary>
+            Certificate store
+            File content should match <see cref="T:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.CertificateFromStoreData"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProvider.GetModuleConnectionString">
+            <summary>
+            Returns the connection string of the module
+            The module can perform authentication with this value
+            </summary>
+            <returns>connection string</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProvider.GetNewModuleConnectionString">
+            <summary>
+            Recreates and returns the connection string of the module
+            </summary>
+            <returns>connection string</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProvider.ProvideModuleConnectionString">
+            <summary>
+            Return the module connection string
+            Retrieving the information from the module configuration or by connecting the IoT hub and asking for it
+            </summary>
+            <returns>Connection string</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProviderBase">
+            <summary>
+            Base class for classes that provide authentication method and information
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProviderBase.GetConnectionString">
+            <summary>
+            This function returns the connection string of the module
+            By this connection string the module should be able to perform authentication to th IoT Hub
+            </summary>
+            <returns>Connection String</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProviderBase.#ctor(Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="authenticationData">AuthenticationConfigurationData configuration</param>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProviderBase.AuthenticationData">
+            <summary>
+            AuthenticationData configuration
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProviderBase.CreateModuleConnectionString(System.String,System.String,System.String)">
+            <summary>
+            Creates the Connection String formatted as it is expected by the Microsoft.Azure.Clients SDK
+            </summary>
+            <param name="gatewayHostName">Gateway FQDN</param>
+            <param name="deviceId">Device id</param>
+            <param name="primaryKey">Primary key</param>
+            <returns>Connection String formatted as it is expected by the Microsoft.Azure.Clients SDK</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProviderFromDevice">
+            <summary>
+            This class returns the authentication method and the required information for the Module authentication
+            The class retrieve the information by connection the IoT hub and querying for the device's module information
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProviderFromDevice.#ctor(Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="authenticationData">AuthenticationConfigurationData configuration</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProviderFromDevice.#ctor(Microsoft.Azure.IoT.Agent.IoT.RestApis.IDeviceApi,Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="deviceAPi">The device API to use</param>
+            <param name="authenticationData">AuthenticationConfigurationData configuration</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProviderFromDevice.GetConnectionString">
+            <summary>
+            This method connects to the IoT Hub with the device identity.
+            by that it queries the authentication information for its module authentication
+            It then returns the Connection string by which the Module can perform authentication
+            </summary>
+            <returns>Connection String</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProviderFromDPS">
+            <summary>
+            This class returns the authentication method and the required information for the Module authentication
+            The class retrieves the information by connecting to theDPS service and querying the last registration, then to the IoT hub and querying for the device's module information
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProviderFromDPS.#ctor(Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="authenticationData">AuthenticationConfigurationData configuration</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProviderFromDPS.#ctor(Microsoft.Azure.IoT.Agent.IoT.RestApis.IDpsApi,Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="dpsAPi">The DPS API to use</param>
+            <param name="authenticationData">AuthenticationConfigurationData configuration</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProviderFromDPS.GetConnectionString">
+            <summary>
+            This method connects to the IoT Hub with the device identity.
+            by that it queries the authentication information for its module authentication
+            It then returns the Connection string by which the Module can perform authentication
+            </summary>
+            <returns>Connection String</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProviderFromModule">
+            <summary>
+            This class returns the authentication method and the required information for the Module authentication
+            The class retrieve the information from a configuration
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProviderFromModule.#ctor(Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="authenticationData">AuthenticationConfigurationData configuration</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProviderFromModule.GetConnectionString">
+            <summary>
+            Returns the connection string from the configuration file
+            </summary>
+            <returns>Connection String</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.CertificateFromStoreData">
+            <summary>
+            Contains data required to load a certificate from a certificate store
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.CertificateFromStoreData.StoreLocation">
+            <summary>
+            The location of the certificate store
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.CertificateFromStoreData.StoreName">
+            <summary>
+            The name of the certificate store
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.CertificateFromStoreData.CertificateThumbprint">
+            <summary>
+            The certificate's thumbprint
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.CertificateLoader">
+            <summary>
+            Responsible for loading certificates
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.CertificateLoader.Load(Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProvider.CertificateLocation,System.String)">
+            <summary>
+            Loads a certificate
+            </summary>
+            <param name="certificateLocation">The kind of location that the  certificate will be loaded from</param>
+            <param name="certificateInfoFilePath">Path to the file that will be used to load the certificate. The expected content depends on the value of 
+            <see cref="T:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationMethodProvider.CertificateLocation"/></param>
+            <exception cref="T:System.ArgumentNullException" />
+            <exception cref="T:System.ArgumentOutOfRangeException" />
+            <exception cref="T:Microsoft.Azure.IoT.Agent.Core.Exceptions.AgentException" />
+            <returns>The loaded certificate</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.Configuration.IoTHubTwinConfigurationProvider`1">
+            <summary>
+            Provides <see cref="T:Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfiguration"/> updates from the IoTHub
+            </summary>
+        </member>
+        <member name="E:Microsoft.Azure.IoT.Agent.IoT.Configuration.IoTHubTwinConfigurationProvider`1.FailedToParseConfiguration">
+            <summary>
+            Event handlers for FailedToParseConfiguration
+            </summary>
+        </member>
+        <member name="E:Microsoft.Azure.IoT.Agent.IoT.Configuration.IoTHubTwinConfigurationProvider`1.RemoteConfigurationChanged">
+            <summary>
+            Event that notifies about configuration updates
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.Configuration.IoTHubTwinConfigurationProvider`1.ConfigSectionName">
+            <summary>
+            The name of the configuration section in the twin
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.Configuration.IoTHubTwinConfigurationProvider`1._moduleClient">
+            <summary>
+            The iot hub module client
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.Configuration.IoTHubTwinConfigurationProvider`1.#ctor">
+            <summary>
+            Ctor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.Configuration.IoTHubTwinConfigurationProvider`1.OnDesiredPropertyUpdateCallback(Microsoft.Azure.Devices.Shared.TwinCollection,System.Object)">
+            <summary>
+            Event handler for DesiredProperty updates from the remote twin
+            Raises the <see cref="E:Microsoft.Azure.IoT.Agent.IoT.Configuration.IoTHubTwinConfigurationProvider`1.RemoteConfigurationChanged"/> event
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.Configuration.IoTHubTwinConfigurationProvider`1.GetRemoteConfigurationData">
+            <summary>
+            Gets an updated <see cref="T:Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfiguration"/> instance
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.Configuration.IoTHubTwinConfigurationProvider`1.ReadTwinConfiguration(Microsoft.Azure.Devices.Shared.TwinCollection)">
+            <summary>
+            Reads the agentConfiguration section from the given <see cref="T:Microsoft.Azure.Devices.Shared.TwinCollection"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.Configuration.IoTHubTwinConfigurationProvider`1.GetAgentConfigurationObjectFromTwin(Microsoft.Azure.Devices.Shared.TwinCollection)">
+            <summary>
+            Reads and prepares the agentConfiguration section for deserialization 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.Configuration.IoTHubTwinConfigurationProvider`1.GetTwinCollection">
+            <summary>
+            Connect to the Hub to get the twin data
+            </summary>
+            <returns>TwinCollection of the desired properties</returns>
+            <exception cref="T:System.TimeoutException">Throw exception if couldn't get the twin after configurable timeout</exception>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.Configuration.IoTHubTwinConfigurationProvider`1.HandleNullValues(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Remove keys with null values
+            </summary>
+            <param name="jObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.Configuration.IoTHubTwinConfigurationProvider`1.DeserializeTwin(Newtonsoft.Json.Linq.JToken,System.Collections.Generic.List{System.String}@)">
+            <summary>
+            Deserialize agent twin configuration,
+            </summary>
+            <param name="readyToDeserializeTwinConfiguration">ready to deserialize twin json</param>
+            <param name="outError">List of properties that could not be parsed</param>
+            <returns>TwinConfiguration</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.Configuration.IoTHubTwinConfigurationProvider`1.OnFailedToParseConfiguration(System.Collections.Generic.IList{System.String})">
+            <summary>
+            Handler function for failing configuration parsing
+            </summary>
+            <param name="configurations">The misconfigured properties</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.Configuration.IoTHubTwinConfigurationProvider`1.UpdateReportedProperties(Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfiguration)">
+            <summary>
+            Update module twin reported properites with current agent configuration 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.Configuration.IoTInterfaceConfig">
+            <summary>
+            Configuration for the agent's IoT interface
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.Configuration.IoTInterfaceConfig.TransportType">
+            <summary>
+            Gets the transport type to use
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.Configuration.IoTInterfaceConfig.RemoteConfigurationObject">
+            <summary>
+            Gets the remote (twin) configuration object name
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.Configuration.IoTInterfaceConfig.#ctor(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Ctor
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.Configuration.LocalIoTHubConfiguration">
+            <summary>
+            Represents local configuration values related to the IoTHub
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.Configuration.LocalIoTHubConfiguration.Authentication">
+            <summary>
+            Authentication related configuration
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.Configuration.LocalIoTHubConfiguration.IotInterface">
+            <summary>
+            IoT interface related configuration
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.Configuration.RemoteIoTConfiguration">
+            <summary>
+            Extension of <see cref="T:Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfiguration"/> that holds IoT related configurations
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.Configuration.RemoteIoTConfiguration.HubResourceId">
+            <summary>
+            The Azure resource id of the IoT hub, needs to be added to the message for backend purposes
+            There is no default value
+            It should always be included in the remote configuration (??)
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.Exceptions.FailedToGetModuleException">
+            <summary>
+            Exception indicates that a Module object cannot be retrieved
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.Exceptions.FailedToGetModuleException.#ctor(System.String)">
+            <summary>
+            C-tor 
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.Exceptions.FailedToGetRegistrationException">
+            <summary>
+            Exception indicates that a Registration object cannot be retrieved
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.Exceptions.FailedToGetRegistrationException.#ctor(System.String)">
+            <summary>
+            C-tor 
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IModuleClient">
+            <summary>
+            ModuleCLient interface
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IModuleClient.SendEventAsync(Microsoft.Azure.Devices.Client.Message)">
+            <summary>
+            Send the message to the IoTHub
+            </summary>
+            <param name="message">Message to send</param>
+            <returns>Awaitable task</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IModuleClient.GetTwinAsync">
+            <summary>
+            Gets the device's remote twin
+            </summary>
+            <returns>Awaitable task with device twin</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IModuleClient.OpenAsync">
+            <summary>
+            Explicitly open the DeviceClient instance.
+            </summary>
+            <returns>Task </returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IModuleClient.SetDesiredPropertyUpdateCallbackAsync(Microsoft.Azure.Devices.Client.DesiredPropertyUpdateCallback,System.Object)">
+            <summary>
+            Set a callback that will be called whenever the client receives a twin state update (desired or reported) from the service
+            </summary>
+            <param name="callback">Callback to call after the state update has been received and applied</param>
+            <param name="userContext">Context object that will be passed into callback</param>
+            <returns>Task</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IModuleClient.UpdateRportedPropertiesAsync(Microsoft.Azure.Devices.Shared.TwinCollection)">
+            <summary>
+            Updates reported config in module twin
+            </summary>
+            <param name="reported">Reported properties to update</param>
+            <returns>Awaitable task</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IModuleClient.SetConnectionStatusChangesHandler(Microsoft.Azure.Devices.Client.ConnectionStatusChangesHandler)">
+            <summary>
+            Set a callback that will be called whenever the connection status changes
+            </summary>
+            <param name="statusChangesHandler">the callback</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IModuleClient.ReInit(System.String,Microsoft.Azure.Devices.Client.TransportType)">
+            <summary>
+            Re-Inits the Module Client with the given connection string and transport type
+            </summary>
+            <param name="connectionString">the connection string</param>
+            <param name="transportType">the transport type</param>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IotHubMessagingClient">
+            <summary>
+            The IoT Hub client that enables sending and receiving data from the hub
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IotHubMessagingClient._cancellationTokenSource">
+            <summary>
+            Cancellation token for canceling IoTHubClient scheduled jobs
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IotHubMessagingClient._isDisposed">
+            <summary>
+            A flag indicating if this object was already disposed
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IotHubMessagingClient._moduleClient">
+            <summary>
+            A singleton instance  of the client that is used to connect the IoT Hub
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IotHubMessagingClient._instance">
+            <summary>
+            A singleton instance of the <see cref="T:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IotHubMessagingClient"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IotHubMessagingClient.Instance">
+            <summary>
+            Gets the singleton instance of <see cref="T:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IotHubMessagingClient"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IotHubMessagingClient.#ctor">
+            <summary>
+            Static ctor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IotHubMessagingClient.Dispose">
+            <summary>
+            Disposing the object
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IotHubMessagingClient.DisposeInstance">
+            <summary>
+            Disposes the singleton instance
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IotHubMessagingClient.GetTwinAsync">
+            <summary>
+            Retrieve a device twin object for the current client
+            </summary>
+            <returns>The device twin object</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IotHubMessagingClient.SendMessage(Microsoft.Azure.IoT.Agent.Core.MessageWorker.AgentMessage,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Send a message to the hub
+            </summary>
+            <param name="messageBody">The message to send</param>
+            <param name="messageProperties">Additional message properties</param>
+            <returns>Task that can be awaited for the send completion</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IotHubMessagingClient.Dispose(System.Boolean)">
+            <summary>
+            Disposing the object
+            </summary>
+            <param name="disposing">Flag indicating dispose state</param>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.ModuleClientWrapper">
+            <summary>
+            Delegate to Azure IoT Sdk ModuleClient
+            The wrapper is required for the sdk's ModuleClient to implement the IModuleClient interface
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.ModuleClientWrapper.#ctor(Microsoft.Azure.Devices.Client.ModuleClient)">
+            <summary>
+            C-tor creates a new wrapper object with the given client
+            </summary>
+            <param name="client">Azure IoT Sdk ModuleClient</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.ModuleClientWrapper.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.ModuleClientWrapper.GetTwinAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.ModuleClientWrapper.SendEventAsync(Microsoft.Azure.Devices.Client.Message)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.ModuleClientWrapper.OpenAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.ModuleClientWrapper.SetDesiredPropertyUpdateCallbackAsync(Microsoft.Azure.Devices.Client.DesiredPropertyUpdateCallback,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.ModuleClientWrapper.UpdateRportedPropertiesAsync(Microsoft.Azure.Devices.Shared.TwinCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.ModuleClientWrapper.SetConnectionStatusChangesHandler(Microsoft.Azure.Devices.Client.ConnectionStatusChangesHandler)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.ModuleClientWrapper.ReInit(System.String,Microsoft.Azure.Devices.Client.TransportType)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.Providers.IoTHubInterface">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.Providers.IoTHubInterface.RemoteConfigurationProvider">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.Providers.IoTHubInterfaceBase">
+            <summary>
+            Facade to the IoTHub external interface
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.Providers.IoTHubInterfaceBase.RemoteConfigurationProvider">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.Providers.IoTHubInterfaceBase.ExternalClient">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.Providers.IoTHubInterfaceBase.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.Providers.ModuleClientProvider">
+            <summary>
+            Module client provider
+            The provider provides an IModuleClient
+            The user can set its own client by adding ModuleClientDll and keys in App.Config
+            if the user does not set the keys above the provider will provide the default Azure IoT sdk's ModuleClient with the
+            connection string
+            from App.Config
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.IoT.Providers.ModuleClientProvider._client">
+            <summary>
+            IModuleClient client
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.Providers.ModuleClientProvider.GetClient">
+            <summary>
+            Gets the client
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.Providers.ModuleClientProvider.CreateClient">
+            <summary>
+            If a ModuleClient configuration is specified,
+            creates a module client from the configuration,
+            Otherwise creates a ModuleClientWrapper which delegates to the IoT sdk's ModuleClient.
+            according to the LocalConfiguration.ClientConnectionString
+            </summary>
+            <returns>A new instance of IModuleClient</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.RestApis.DevicesApi">
+            <summary>
+            This class implements some of the APIs that are supported by the Microsoft.Azure.Devices sdk
+            The APIs are sent using rest protocol
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.RestApis.DevicesApi.#ctor(Microsoft.Azure.IoT.Agent.IoT.RestApis.RestClient)">
+            <summary>
+            DevicesApi constructor
+            </summary>
+            <param name="restClient">restClient on which the apis will be sent</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.RestApis.DevicesApi.GetDeviceAgentModule(System.String)">
+            <summary>
+            Return the agent module of the given device id
+            The return value represents the json of the Module
+            </summary>
+            <param name="deviceId">the device id for which we search the module</param>
+            <returns>JToken of the Module</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.RestApis.DevicesApi.GetDeviceAgentModule(System.String,System.String)">
+            <summary>
+            Return the Module that is corresponded to the given moduleName of the given device id
+            The return value represents the json of the Module
+            </summary>
+            <param name="deviceId">the device id for which we search the module</param>
+            <param name="moduleName">the module name we are looking for</param>
+            <returns>JToken of the Module or null if no module was returned</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.RestApis.DpsApi">
+            <summary>
+            This class implements some of the REST APIs that are supported by the DPS
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.RestApis.DpsApi.#ctor(Microsoft.Azure.IoT.Agent.IoT.RestApis.RestClient)">
+            <summary>
+            DpsApi constructor
+            </summary>
+            <param name="restClient">restClient on which the apis will be sent</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.RestApis.DpsApi.GetDeviceRegistration(System.String,System.String)">
+            <summary>
+            Return the device registration from the DPS
+            The return value represents the json of the Registration object
+            </summary>
+            <param name="idScope">the ID Scope of the DPS service</param>
+            <param name="registrationId">the registration ID of the device</param>
+            <returns>JToken of the Registration object</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.RestApis.IDeviceApi">
+            <summary>
+            Interface for device API
+            abstract functions of the supported APIs
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.RestApis.IDeviceApi.GetDeviceAgentModule(System.String)">
+            <summary>
+            Return the agent module of the given device id
+            The return value represents the json of the Module
+            </summary>
+            <param name="deviceId">the device id for which we search the module</param>
+            <returns>JToken of the Module</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.RestApis.IDpsApi">
+            <summary>
+            Interface for DPS API
+            abstract functions of the supported APIs
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.RestApis.IDpsApi.GetDeviceRegistration(System.String,System.String)">
+            <summary>
+            Return the device registration from the DPS
+            The return value represents the json of the Registration object
+            </summary>
+            <param name="idScope">the ID Scope of the DPS service</param>
+            <param name="registrationId">the registration ID of the device</param>
+            <returns>JToken of the Registration object</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.RestApis.RestClient">
+            <summary>
+            RestClient implements rest communication to the IoT hub or DPS service
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.IoT.RestApis.RestClient.GatewayHostname">
+            <summary>
+            FQDN of the gateway (IoT hub)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.RestApis.RestClient.CreateFrom(Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData)">
+            <summary>
+            Creates a <see cref="T:Microsoft.Azure.IoT.Agent.IoT.RestApis.RestClient"/> using a given <see cref="T:Microsoft.Azure.IoT.Agent.IoT.AuthenticationUtils.AuthenticationData"/>
+            </summary>
+            <param name="authenticationData">The data from which the instance will be created</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.RestApis.RestClient.GenerateSaSToken(System.String,System.String,System.TimeSpan)">
+            <summary>
+            Generate SaS token from a given connection string 
+            </summary>
+            <param name="key">shared access key for creating the signature</param>
+            <param name="target">target url resource</param>
+            <param name="ttl">TTL</param>
+            <returns>the SAS token for authentication</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.RestApis.RestClient.#ctor(System.String,System.String)">
+            <summary>
+            RestClient Constructor
+            </summary>
+            <param name="gatewayHostname">FQDN of the gateway e.g. iotTestHub.azure.net</param>
+            <param name="sasToken">SAS token for SAS authentication</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.RestApis.RestClient.#ctor(System.String,System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+            RestClient Constructor
+            </summary>
+            <param name="gatewayHostname">Fqdn of the gateway e.g. iotTestHub.azure.net</param>
+            <param name="x509Certficate">x509 certificate for authentication</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.RestApis.RestClient.SendGetRequest(System.String,System.String@)">
+            <summary>
+            Sends "GET" request to the gateway to the given URL
+            </summary>
+            <param name="url">url for the rest request</param>
+            <param name="responseContent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.RestApis.RestClient.SendPostRequest(System.String,System.String,System.String@)">
+            <summary>
+            Sends "POST" request to the gateway to the given URL
+            </summary>
+            <param name="url">url for the rest request</param>
+            <param name="jsonString">the request content</param>
+            <param name="responseContent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.RestApis.RestClient.SetAuthenticationHeader(System.Net.HttpWebRequest)">
+            <summary>
+            Set the required authentication header for the rest request
+            </summary>
+            <param name="request">HttpWebRequest request</param>
+        </member>
+    </members>
+</doc>

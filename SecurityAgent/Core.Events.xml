@@ -1,0 +1,429 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Core.Events</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Azure.IoT.Contracts.Events.AgentTelemetry`1">
+            <summary>
+            Agent telemetry event
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.AgentTelemetry`1.Category">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Contracts.Events.AgentTelemetry`1.#ctor(`0[])">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Contracts.Events.AggregatedEvent`1">
+            <summary>
+            Base type for aggregated events
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.AggregatedEvent`1.Name">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.AggregatedEvent`1.EventType">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.AggregatedEvent`1.Category">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Contracts.Events.AggregatedEvent`1.#ctor(Microsoft.Azure.IoT.Contracts.Events.EventType,Microsoft.Azure.IoT.Contracts.Events.EventPriority,System.String,`0,System.Int32,System.DateTime,System.DateTime)">
+            <summary>
+            Creates a new aggregated event based on the given event
+            </summary>
+            <param name="payload">event payload</param>
+            <param name="hitCount">event hit count</param>
+            <param name="start">aggregation start time</param>
+            <param name="end">aggregation end time</param>
+            <param name="type">event type</param>
+            <param name="priority">event priority</param>
+            <param name="eventName">event name</param>
+            <returns>new aggregated event</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Contracts.Events.EventBase`1">
+            <summary>
+            A base class for all events: security, snapshot and operational
+            </summary>
+            <typeparam name="T">Event payload</typeparam>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.EventBase`1.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.EventBase`1.EventType">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.EventBase`1.IsEmpty">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.EventBase`1.PayloadSchemaVersion">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.EventBase`1.Id">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.EventBase`1.Priority">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.EventBase`1.Category">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.EventBase`1.EventGenerationTime">
+            <summary>
+            Gets the event generation time
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.EventBase`1.TimestampLocal">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.EventBase`1.TimestampUTC">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.EventBase`1.EstimatedSize">
+            <summary>
+            The estimated size of the object (the size of its json serialization)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.EventBase`1.Payload">
+            <summary>
+            The list of payloads contained in the event
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Contracts.Events.EventBase`1.#ctor(Microsoft.Azure.IoT.Contracts.Events.EventPriority,`0[])">
+            <summary>
+            Ctor - creates a new event object
+            </summary>
+            <param name="priority">The event priority</param>
+            <param name="payloads">The event payload</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Contracts.Events.EventBase`1.ToString">
+            <summary>
+            Serializes the event into a printable string
+            </summary>
+            <returns>The event string representation</returns>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.EventBase`1.LazyEstimatedSize">
+            <summary>
+            Using Lazy in order to generate the estimated size only once and only when needed
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Contracts.Events.EventCategory">
+            <summary>
+            Represents the event category
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Contracts.Events.EventPriority">
+            <summary>
+            Represents the event priority
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Contracts.Events.Events.Diagnostic">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.Events.Diagnostic.EventType">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Contracts.Events.Events.Diagnostic.#ctor(Microsoft.Azure.IoT.Contracts.Events.EventPriority,Microsoft.Azure.IoT.Contracts.Events.Payloads.DiagnosticPayload)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Contracts.Events.EventType">
+            <summary>
+            Represent the type of the event
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Contracts.Events.EventType.Security">
+            <summary>
+            Security releated events
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Contracts.Events.EventType.Operational">
+            <summary>
+            Operational events
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Contracts.Events.EventType.Diagnostic">
+            <summary>
+            Diagnostice events (internal purposes)
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Contracts.Events.IEvent">
+            <summary>
+            Event interface
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.IEvent.Name">
+            <summary>
+            The name of the event
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.IEvent.EventType">
+            <summary>
+            The type of the event
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.IEvent.IsEmpty">
+            <summary>
+            Whether this event is empty
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.IEvent.PayloadSchemaVersion">
+            <summary>
+            The schema version that this event implements
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.IEvent.Id">
+            <summary>
+            The ID of the event
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.IEvent.Priority">
+            <summary>
+            Gets the event priority
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.IEvent.Category">
+            <summary>
+            Gets the event category (real-time or snapshot)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.IEvent.TimestampLocal">
+            <summary>
+            Gets the local event generation time
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.IEvent.TimestampUTC">
+            <summary>
+            Gets the UTC event generation time
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.IEvent.EstimatedSize">
+            <summary>
+            The estimated size of the object (the size of its json serialization)
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Contracts.Events.IEventGenerator">
+            <summary>
+            Interface to be implemented by every event generator
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.IEventGenerator.Priority">
+            <summary>
+            Gets the priority of events generated by this event generator
+            </summary>
+            <returns>The priority of the events generated by this generator</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Contracts.Events.IEventGenerator.GetEvents">
+            <summary>
+            Tries to generate events and return them
+            </summary>
+            <returns>A list of generated events (could be empty)</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Contracts.Events.JsonFormatting">
+            <summary>
+            Json formatting settings class
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Contracts.Events.JsonFormatting.SerializationSettings">
+            <summary>
+            Contains the json format settings according to our schema
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Contracts.Events.OperationalEvent`1">
+            <summary>
+            A base class for all operational events
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.OperationalEvent`1.EventType">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Contracts.Events.OperationalEvent`1.#ctor(`0[])">
+            <summary>
+            Ctor - creates a new operational event object
+            </summary>
+            <param name="payload">The payload of the event</param>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.ConfigurationError">
+            <summary>
+            Configuration error event
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.ConfigurationError.#ctor(Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.ConfigurationErrorPayload[])">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.ConfigurationError.Category">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.DroppedEventsStatistics">
+            <summary>
+            Agent telemetry dropped events statistics
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.DroppedEventsStatistics.#ctor(Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.DroppedEventsStatisticsPayload[])">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.MessageStatistics">
+            <summary>
+            Message statistics agent telemetry event
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.MessageStatistics.#ctor(Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.MessageStatisticsPayload[])">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.ConfigurationErrorPayload">
+            <summary>
+            Configuration error payload
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.ConfigurationErrorPayload.ConfigurationName">
+            <summary>
+            The name of the configuration
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.ConfigurationErrorPayload.ErrorType">
+            <summary>
+            Error type
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.ConfigurationErrorPayload.UsedConfiguration">
+            <summary>
+            What configuration is in use
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.ConfigurationErrorPayload.Message">
+            <summary>
+            Message
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.ConfigurationErrorType">
+            <summary>
+            Error in agent twin's configuration
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.ConfigurationErrorType.TypeMismatch">
+            <summary>
+            The value type does not match configuration type
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.ConfigurationErrorType.NotOptimal">
+            <summary>
+            Configuration is not optimal
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.ConfigurationErrorType.Conflict">
+            <summary>
+            Configuration conflicts with another configuration
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.DroppedEventsStatisticsPayload">
+            <summary>
+            Dropped events telemetry payload
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.DroppedEventsStatisticsPayload.Queue">
+            <summary>
+            Queue name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.DroppedEventsStatisticsPayload.CollectedEvents">
+            <summary>
+            Total events
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.DroppedEventsStatisticsPayload.DroppedEvents">
+            <summary>
+            Total amount of dropped events
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.MessageStatisticsPayload">
+            <summary>
+            Message statistic payload
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.MessageStatisticsPayload.MessagesSent">
+            <summary>
+            Total amount of messages sent
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.MessageStatisticsPayload.MessagesUnder4KB">
+            <summary>
+            Total amount of messages under 4kb 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.MessageStatisticsPayload.TotalFailed">
+            <summary>
+            Total amount of failed messages
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Contracts.Events.Payloads.DiagnosticPayload">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.Payloads.DiagnosticPayload.CorrelationId">
+            <summary>
+            Correlation Id for the diagonstic event
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.Payloads.DiagnosticPayload.Severity">
+            <summary>
+            The severity of the diagnostic event
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.Payloads.DiagnosticPayload.Message">
+            <summary>
+            The message
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.Payloads.DiagnosticPayload.ProcessId">
+            <summary>
+            The Id of the process in which the event occured
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.Payloads.DiagnosticPayload.ThreadId">
+            <summary>
+            The Id of the thread in which the event occured
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Contracts.Events.Payloads.Payload">
+            <summary>
+            Event payload interface
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.Payloads.Payload.ExtraDetails">
+            <summary>
+            Extra details for non-trivial filtering
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Contracts.Events.PeriodicEvent`1">
+            <summary>
+            A base class for all snapshot events
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.PeriodicEvent`1.Category">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Contracts.Events.PeriodicEvent`1.#ctor(Microsoft.Azure.IoT.Contracts.Events.EventPriority,`0[])">
+            <summary>
+            Ctor - creates a new periodic event object
+            </summary>
+            <param name="priority">The event priority</param>
+            <param name="payloads">The payloads of the event</param>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Contracts.Events.TriggeredEvent`1">
+            <summary>
+            A base class for all security events
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Contracts.Events.TriggeredEvent`1.Category">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Contracts.Events.TriggeredEvent`1.#ctor(Microsoft.Azure.IoT.Contracts.Events.EventPriority,`0)">
+            <summary>
+            Ctor - creates a new triggered event object
+            </summary>
+            <param name="priority">The event priority</param>
+            <param name="payload">The payload of the event</param>
+        </member>
+    </members>
+</doc>

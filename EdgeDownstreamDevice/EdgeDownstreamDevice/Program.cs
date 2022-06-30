@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Devices.Edge.Samples.EdgeDownstreamDevice
 
     class Program
     {
+        //HostName=iot-hub-az220-pj130622.azure-devices.net;DeviceId=leaft-device;SharedAccessKey=SxOuz0I62U62QDrIURW3jmPf2Gyi6nUDaupJ0rEqXB8=
         const int TemperatureThreshold = 30;
 
         // 1) Obtain the connection string for your downstream device and to it
@@ -25,19 +26,11 @@ namespace Microsoft.Azure.Devices.Edge.Samples.EdgeDownstreamDevice
         //
         // Either set the DEVICE_CONNECTION_STRING environment variable with this connection string
         // or set it in the Properties/launchSettings.json.
-        static readonly string DeviceConnectionString = "HostName=iot-hub-az220-pj130622.azure-devices.net;DeviceId=leaft-device;SharedAccessKey=SxOuz0I62U62QDrIURW3jmPf2Gyi6nUDaupJ0rEqXB8=;GatewayHostName=iot-edge-device.eastus.cloudapp.azure.com";
+        static readonly string DeviceConnectionString = "HostName=iot-hub-pj270622.azure-devices.net;DeviceId=leaf-temp-device;SharedAccessKey=lEf8UROfAtKi6mbYh34XFL5RKHnKSNOpsaCsVMMgCJY=;GatewayHostName=edgepushkar220.eastus.cloudapp.azure.com";
         static readonly string MessageCountEnv = "500000";
 
         static int messageCount = 10;
-
-        /// <summary>
-        /// First install any CA certificate provided by the user to connect to the Edge device.
-        /// Next attempt to connect to the Edge device and send it MESSAGE_COUNT
-        /// number of telemetry data messages.
-        ///
-        /// Note: Either set the MESSAGE_COUNT environment variable with the number of
-        /// messages to be sent to the IoT Edge runtime or set it in the launchSettings.json.
-        /// </summary>
+  
         static void Main()
         {
             InstallCACert();
@@ -69,16 +62,10 @@ namespace Microsoft.Azure.Devices.Edge.Samples.EdgeDownstreamDevice
             }
 
             Console.WriteLine("Exiting!\n");
+            //FROM /messages/* WHERE NOT IS_DEFINED({$ConnectionModuleId}) INTO $upstream
         }
 
-        /// <summary>
-        /// Add certificate in local cert store for use by downstream device
-        /// client for secure connection to IoT Edge runtime.
-        ///
-        ///    Note: On Windows machines, if you have not run this from an Administrator prompt,
-        ///    a prompt will likely come up to confirm the installation of the certificate.
-        ///    This usually happens the first time a certificate will be installed.
-        /// </summary>
+       
         static void InstallCACert()
         {
             string trustedCACertPath = Environment.GetEnvironmentVariable("IOTEDGE_TRUSTED_CA_CERTIFICATE_PEM_PATH");

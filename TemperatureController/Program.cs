@@ -18,14 +18,15 @@ namespace Microsoft.Azure.Devices.Client.Samples
     public class Program
     {
         // Set the DPS_ID_SCOPE and SAS_TOKEN VALUES from the Administration -> Device connection secion of IoT Central
-        private const string DPS_ID_SCOPE = "0ne005CF7BD";
-        private const string SAS_TOKEN="MQtST787SQsDk+7OOYlVUNnVTln+wofqrYeaGiE1mZp8vDVoZ5g/zEh8a4PvedmGu14zT+ZGECeyukXC7lY/TQ==";
+        private const string DPS_ID_SCOPE = "0ne0065966A";
+        private const string SAS_TOKEN="p+UaSzsoA1jO4/Lvp6QrSHjHmabpG7a7am+jJqDXzvCK2SEFsH3CslkYctot4+OdPuTcERhcbBS71v2Hal9tGQ==";
 
      
         private const string ModelId = "dtmi:com:example:TemperatureMonitor;2";
-        private const string DEVICE_ID = "TempMonitorDevice";        
+        private const string DEVICE_ID = "TemperatureMonitor";        
         private const string DPS_ENDPOINT = "global.azure-devices-provisioning.net";
         private static ILogger s_logger;
+        //HostName=iot-dps-az220-pj130622.azure-devices-provisioning.net;SharedAccessKey=p+UaSzsoA1jO4/Lvp6QrSHjHmabpG7a7am+jJqDXzvCK2SEFsH3CslkYctot4+OdPuTcERhcbBS71v2Hal9tGQ==
 
         public static async Task Main(string[] args)
         {
@@ -80,6 +81,22 @@ namespace Microsoft.Azure.Devices.Client.Samples
             };
             return await pdc.RegisterAsync(pnpPayload, cancellationToken);
         }
+
+
+
+
+//HostName=;SharedAccessKey=
+
+
+
+
+
+
+
+
+
+
+
 
         // Initialize the device client instance using connection string based authentication, over Mqtt protocol (TCP, with fallback over Websocket) and
         // setting the ModelId into ClientOptions.This method also sets a connection status change callback, that will get triggered any time the device's

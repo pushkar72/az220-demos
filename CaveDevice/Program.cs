@@ -10,7 +10,7 @@ namespace CaveDevice
         // Contains methods that a device can use to send messages to and receive from an IoT Hub.
         private static DeviceClient deviceClient;
 
-        private readonly static string connectionString = "HostName=iot-hub-az220-pj130622.azure-devices.net;DeviceId=cavetemp-device5454;SharedAccessKey=OSWvB/xkXYcpEdC38Y7l9E+hsLL/UEmY5O3cTpJhzMs=";
+        private readonly static string connectionString = "HostName=iot-hub-pj270622.azure-devices.net;DeviceId=leaf-temp-device;SharedAccessKey=lEf8UROfAtKi6mbYh34XFL5RKHnKSNOpsaCsVMMgCJY=;GatewayHostName=edgepushkar220.eastus.cloudapp.azure.com";
         private static void Main(string[] args)
         {
             Console.WriteLine("IoT Hub C# Simulated Cave Device. Ctrl-C to exit.\n");
@@ -52,7 +52,7 @@ namespace CaveDevice
                 await deviceClient.SendEventAsync(message);
                 Console.WriteLine("{0} > Sending message: {1}", GetTimestamp(DateTime.Now), messageString);
 
-                await Task.Delay(300);
+                await Task.Delay(1000);
             }
         }
         public static String GetTimestamp(DateTime value)

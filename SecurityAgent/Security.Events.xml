@@ -1,0 +1,533 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Security.Events</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Events.ConnectedHardware">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Contracts.Events.Events.ConnectedHardware.#ctor(Microsoft.Azure.IoT.Contracts.Events.EventPriority,Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ConnectedHardwarePayload[])">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Events.ConnectionCreate">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Events.ConnectionCreate.EventGenerationTime">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Contracts.Events.Events.ConnectionCreate.#ctor(Microsoft.Azure.IoT.Contracts.Events.EventPriority,Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ConnectionsPayload,System.DateTime)">
+            <summary>
+            Get an instance of a connection event
+            </summary>
+            <param name="priority">The priority of the event</param>
+            <param name="payload">The payload of the event</param>
+            <param name="eventTime">The time the original connection attempt was made</param>
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Events.FirewallConfiguration">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Contracts.Events.Events.FirewallConfiguration.#ctor(Microsoft.Azure.IoT.Contracts.Events.EventPriority,Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.FirewallRulePayload[])">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Events.ListeningPorts">
+            <summary>
+            Snapshot event that sends all tcp open ports on the machine in the priodic check time
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Contracts.Events.Events.ListeningPorts.#ctor(Microsoft.Azure.IoT.Contracts.Events.EventPriority,Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ListeningPortsPayload[])">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Events.LocalUsers">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Contracts.Events.Events.LocalUsers.#ctor(Microsoft.Azure.IoT.Contracts.Events.EventPriority,Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.LocalUsersPayload[])">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Events.Login">
+            <summary>
+            Represents a login event
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Events.Login.EventGenerationTime">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Contracts.Events.Events.Login.#ctor(Microsoft.Azure.IoT.Contracts.Events.EventPriority,Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.LoginPayload,System.DateTime)">
+            <summary>
+            Get an instance of a login event
+            </summary>
+            <param name="priority">The priority of the event</param>
+            <param name="payload">The payload of the event</param>
+            <param name="eventTime">The time the original login attempt was made</param>
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Events.OSBaseline">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Contracts.Events.Events.OSBaseline.#ctor(Microsoft.Azure.IoT.Contracts.Events.EventPriority,Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.BaselinePayload[])">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Events.ProcessCreate">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Events.ProcessCreate.EventGenerationTime">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Contracts.Events.Events.ProcessCreate.#ctor(Microsoft.Azure.IoT.Contracts.Events.EventPriority,Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessCreationPayload)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Events.ProcessTerminate">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Events.ProcessTerminate.EventGenerationTime">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Contracts.Events.Events.ProcessTerminate.#ctor(Microsoft.Azure.IoT.Contracts.Events.EventPriority,Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessTerminationPayload)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Events.SystemInformation">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Contracts.Events.Events.SystemInformation.#ctor(Microsoft.Azure.IoT.Contracts.Events.EventPriority,Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.SystemInformationPayload[])">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.BaselinePayload">
+            <summary>
+            An OS Baseline payload, contains information about a failed baseline rule
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.BaselinePayload.Description">
+            <summary>
+            The decription of the rule
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.BaselinePayload.CceId">
+            <summary>
+            The cce id of the failed rule
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.BaselinePayload.Result">
+            <summary>
+            The result of the rule, Fail if rule failed, Err if there was an error while trying to run the rule
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.BaselinePayload.Error">
+            <summary>
+            The error message
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.BaselinePayload.Severity">
+            <summary>
+            The severity of the problem
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ConnectedHardwarePayload">
+            <summary>
+            Connected hardware payload
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ConnectedHardwarePayload.ConnectedHardware">
+            <summary>
+            A connected hardware device
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ConnectionsPayload">
+            <summary>
+            Open connection event
+            Represnts a connection from the device to teh internet
+            We currently know to handle connection from family INET
+            Connections from other families are required more investigation - for those connection we send an event with the raw
+            data of the HexSaddr to be further investigated by the server
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ConnectionsPayload.ConnectionDirection">
+            <summary>
+            Marks inbound or outbound connections
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ConnectionsPayload.Executable">
+            <summary>
+            The full path of the process executable
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ConnectionsPayload.ProcessId">
+            <summary>
+            The connection process Id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ConnectionsPayload.CommandLine">
+            <summary>
+            The process who created the connection (including arguments)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ConnectionsPayload.UserId">
+            <summary>
+            The user id who performed the connection
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ConnectionsPayload.RemoteAddress">
+            <summary>
+            The remote address of the connection
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ConnectionsPayload.RemotePort">
+            <summary>
+            The remote port of the connection
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ConnectionsPayload.LocalAddress">
+            <summary>
+            The local address of the connection
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ConnectionsPayload.LocalPort">
+            <summary>
+            The local port of the connection
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ConnectionsPayload.Protocol">
+            <summary>
+            The protocol of the connection
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ConnectionsPayload.Direction">
+            <summary>
+            The result of the login attempt
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.FirewallRulePayload">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.FirewallRulePayload.Actions">
+            <summary>
+            Rule actions
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.FirewallRulePayload.Directions">
+            <summary>
+            Rule directions
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.FirewallRulePayload.Priority">
+            <summary>
+            Rule priority  
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.FirewallRulePayload.Direction">
+            <summary>
+            Rule direction
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.FirewallRulePayload.Enabled">
+            <summary>
+            Is rule enabled
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.FirewallRulePayload.Action">
+            <summary>
+            Rule action. Other is used for special cases, details should be provided under ExtraDetails.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.FirewallRulePayload.Application">
+            <summary>
+            The application the rule applies to
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.FirewallRulePayload.ChainName">
+            <summary>
+            Rule parent chain name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.FirewallRulePayload.SourceAddress">
+            <summary>
+            Source IP address or tag
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.FirewallRulePayload.SourcePort">
+            <summary>
+            Source Port
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.FirewallRulePayload.DestinationAddress">
+            <summary>
+            Destination IP address or tag
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.FirewallRulePayload.DestinationPort">
+            <summary>
+            Remote Port
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.FirewallRulePayload.Protocol">
+            <summary>
+            Rule connection protocol
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ListeningPortsPayload">
+            <summary>
+            Represents all open ports (socket state=LISTEN) with local IP (who listens) and target (who can connect)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ListeningPortsPayload.Protocol">
+            <summary>
+            The protocol tcp or udp
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ListeningPortsPayload.LocalAddress">
+            <summary>
+            The local address that is listening 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ListeningPortsPayload.LocalPort">
+            <summary>
+            The local port that is listening 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ListeningPortsPayload.RemoteAddress">
+            <summary>
+            The remote address who the listener listens to
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ListeningPortsPayload.RemotePort">
+            <summary>
+            The remote port 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.LocalUsersPayload">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.LocalUsersPayload.UserName">
+            <summary>
+            Username 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.LocalUsersPayload.UserId">
+            <summary>
+            User id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.LocalUsersPayload.GroupNames">
+            <summary>
+            The name of the groups that the user is a member of
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.LocalUsersPayload.GroupIds">
+            <summary>
+            The id of the groups that the user is a member of
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.LoginPayload">
+            <summary>
+            a login event payload
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.LoginPayload.LoginResult">
+            <summary>
+            Represents a result of a login attempt
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.LoginPayload.ProcessId">
+            <summary>
+            The login process Id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.LoginPayload.UserId">
+            <summary>
+            The login user Id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.LoginPayload.UserName">
+            <summary>
+            The login user name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.LoginPayload.Operation">
+            <summary>
+            The login operation
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.LoginPayload.Executable">
+            <summary>
+            The login executable
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.LoginPayload.RemoteAddress">
+            <summary>
+            The remote address of the login attempt
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.LoginPayload.RemotePort">
+            <summary>
+            The remote port of the login attempt
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.LoginPayload.LocalPort">
+            <summary>
+            The local port of the login attempt
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.LoginPayload.Result">
+            <summary>
+            The result of the login attempt
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.EProtocol">
+            <summary>
+            Represents the event priority
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessCreationPayload">
+            <summary>
+            Process creation payload
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessCreationPayload.Executable">
+            <summary>
+            The full path of the process executable
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessCreationPayload.ProcessId">
+            <summary>
+            The process Id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessCreationPayload.ParentProcessId">
+            <summary>
+            The process Id of the parent
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessCreationPayload.UserName">
+            <summary>
+            The name of the account name under which the process was started
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessCreationPayload.UserId">
+            <summary>
+            The name of the account id under which the process was started
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessCreationPayload.CommandLine">
+            <summary>
+            The command line used to start the process, includes the executable path and arguments
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessCreationPayload.Hash">
+            <summary>
+            The executable hash
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessCreationPayload.Time">
+            <summary>
+            The The time the event happened
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessTerminationPayload">
+            <summary>
+            Process exit payload
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessTerminationPayload.Executable">
+            <summary>
+            The full path of the process image
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessTerminationPayload.ProcessId">
+            <summary>
+            The process Id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessTerminationPayload.ExitStatus">
+            <summary>
+            The exit status of the process
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessTerminationPayload.Time">
+            <summary>
+            The The time the event happened
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.SystemInformationPayload">
+            <summary>
+            System information payload
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.SystemInformationPayload.OSName">
+            <summary>
+            The name of the OS
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.SystemInformationPayload.OSVersion">
+            <summary>
+            The version of the OS
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.SystemInformationPayload.OSVendor">
+            <summary>
+            The vendor name of the OS
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.SystemInformationPayload.OsArchitecture">
+            <summary>
+            The Architecture of the OS
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.SystemInformationPayload.HostName">
+            <summary>
+            The name host that the agent is running on
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.SystemInformationPayload.BIOSVersion">
+            <summary>
+            The version of the BIOS
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.SystemInformationPayload.BootDevice">
+            <summary>
+            The boot device
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.SystemInformationPayload.TotalPhysicalMemoryInKB">
+            <summary>
+            The total amount of physical memory the system has installed in KB
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.SystemInformationPayload.FreePhysicalMemoryInKB">
+            <summary>
+            The amount of physical memory that is currently free on the system
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.SystemInformationPayload.TotalVirtualMemoryInKB">
+            <summary>
+            The total amount of virtual memory the system can address in KB
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.SystemInformationPayload.FreeVirtualMemoryInKB">
+            <summary>
+            The amount of virtual memory that is currently free on the system
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.SecurityPeriodicEvent`1">
+            <summary>
+            A base class for all security snapshot events
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.SecurityPeriodicEvent`1.EventType">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Contracts.Events.SecurityPeriodicEvent`1.#ctor(Microsoft.Azure.IoT.Contracts.Events.EventPriority,`0[])">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Contracts.Events.SecurityTriggeredEvent`1">
+            <summary>
+            A base class for all security triggered events snapshot events
+            </summary>
+            <typeparam name="T">event payloadd</typeparam>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Contracts.Events.SecurityTriggeredEvent`1.EventType">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Contracts.Events.SecurityTriggeredEvent`1.#ctor(Microsoft.Azure.IoT.Contracts.Events.EventPriority,`0)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

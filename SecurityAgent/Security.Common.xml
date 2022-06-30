@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Security.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedConnectionCreateEventGeneratorCommon">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedConnectionCreateEventGeneratorCommon.AggregationInterval">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedConnectionCreateEventGeneratorCommon.AggregationEnabled">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedConnectionCreateEventGeneratorCommon.PayloadComparer">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedConnectionCreateEventGeneratorCommon.Priority">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedConnectionCreateEventGeneratorCommon.CreateAggregatedEvent(Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ConnectionsPayload,System.Int32,System.DateTime,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedConnectionCreateEventGeneratorCommon.#ctor(Microsoft.Azure.IoT.Agent.Core.EventGeneration.EventGenerator[])">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedConnectionCreateEventGeneratorCommon.ConnectionCreateComparer.Equals(Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ConnectionsPayload,Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ConnectionsPayload)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedConnectionCreateEventGeneratorCommon.ConnectionCreateComparer.GetHashCode(Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ConnectionsPayload)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedProcessCreateEventGeneratorCommon">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedProcessCreateEventGeneratorCommon.AggregationInterval">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedProcessCreateEventGeneratorCommon.AggregationEnabled">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedProcessCreateEventGeneratorCommon.PayloadComparer">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedProcessCreateEventGeneratorCommon.Priority">
+            <inheritdoc />s
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedProcessCreateEventGeneratorCommon.CreateAggregatedEvent(Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessCreationPayload,System.Int32,System.DateTime,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedProcessCreateEventGeneratorCommon.#ctor(Microsoft.Azure.IoT.Agent.Core.EventGeneration.EventGenerator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedProcessCreateEventGeneratorCommon.ProcessCreateComparer.Equals(Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessCreationPayload,Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessCreationPayload)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedProcessCreateEventGeneratorCommon.ProcessCreateComparer.GetHashCode(Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessCreationPayload)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedProcessTerminateEventGeneratorCommon">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedProcessTerminateEventGeneratorCommon.AggregationInterval">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedProcessTerminateEventGeneratorCommon.AggregationEnabled">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedProcessTerminateEventGeneratorCommon.PayloadComparer">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedProcessTerminateEventGeneratorCommon.Priority">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedProcessTerminateEventGeneratorCommon.CreateAggregatedEvent(Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessTerminationPayload,System.Int32,System.DateTime,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedProcessTerminateEventGeneratorCommon.#ctor(Microsoft.Azure.IoT.Agent.Core.EventGeneration.EventGenerator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedProcessTerminateEventGeneratorCommon.ProcessTerminateComparer.Equals(Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessTerminationPayload,Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessTerminationPayload)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Agent.Common.AggregatedEventGenerators.AggregatedProcessTerminateEventGeneratorCommon.ProcessTerminateComparer.GetHashCode(Microsoft.Azure.Security.IoT.Contracts.Events.Payloads.ProcessTerminationPayload)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Agent.Common.RemoteSecurityModuleConfiguration">
+            <summary>
+            Extension of <see cref="T:Microsoft.Azure.IoT.Agent.IoT.Configuration.RemoteIoTConfiguration"/> that holds security related configurations
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.RemoteSecurityModuleConfiguration.ConnectedHardware">
+            <summary>
+            ConnectedHardware event with its default priority
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.RemoteSecurityModuleConfiguration.ListeningPorts">
+            <summary>
+            ListeningPortsSnapshot event with its default priority
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.RemoteSecurityModuleConfiguration.ProcessCreate">
+            <summary>
+            ProcessCreate event with its default priority
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.RemoteSecurityModuleConfiguration.ProcessTerminate">
+            <summary>
+            ProcessTerminate event with its default priority
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.RemoteSecurityModuleConfiguration.SystemInformation">
+            <summary>
+            SystemInformation event with its default priority
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.RemoteSecurityModuleConfiguration.LocalUsers">
+            <summary>
+            LocalUsers event with its default priority
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.RemoteSecurityModuleConfiguration.Login">
+            <summary>
+            Login event with its default priority
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.RemoteSecurityModuleConfiguration.ConnectionCreate">
+            <summary>
+            ConnectionCreate event with its default priority
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.RemoteSecurityModuleConfiguration.FirewallConfiguration">
+            <summary>
+            FirewallConfiguration event with its default priority
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.RemoteSecurityModuleConfiguration.OSBaseline">
+            <summary>
+            OSBaseline event with its default priority
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.RemoteSecurityModuleConfiguration.BaselineCustomChecksEnabled">
+            <summary>
+            Baseline custom checks configuration mode
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.RemoteSecurityModuleConfiguration.BaselineCustomChecksFilePath">
+            <summary>
+            Baseline custom checks configuration absolute file path
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.RemoteSecurityModuleConfiguration.BaselineCustomChecksFileHash">
+            <summary>
+            Baseline custom checks configuration file hash
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.RemoteSecurityModuleConfiguration.ProcessCreateAgrregationEnabled">
+            <summary>
+            Enable event aggregation for process create
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.RemoteSecurityModuleConfiguration.ProcessCreateAgrregationInterval">
+            <summary>
+            Event aggregation interval for process create
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.RemoteSecurityModuleConfiguration.ConnectionCreateAgrregationEnabled">
+            <summary>
+            Enable event aggregation for connection create
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.RemoteSecurityModuleConfiguration.ConnectionCreateAgrregationInterval">
+            <summary>
+            Event aggregation interval for connection create
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.RemoteSecurityModuleConfiguration.ProcessTerminateAggregationEnabled">
+            <summary>
+            Enable event aggregation for process terminate
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.RemoteSecurityModuleConfiguration.ProcessTerminateAggregationInterval">
+            <summary>
+            Event aggregation interval for process terminate
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Agent.Common.SecurityIoTHubInterface">
+            <summary>
+            Facade to the IoTHub external interface, with security module configuration
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Security.IoT.Agent.Common.SecurityIoTHubInterface.RemoteConfigurationProvider">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Agent.Common.Utils.NetstatUtils">
+            <summary>
+            Helper class for parsing the output of netstat commands
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Security.IoT.Agent.Common.Utils.NetstatUtils.NetstatProtocols">
+            <summary>
+            Prtocol to parse
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Security.IoT.Agent.Common.Utils.NetstatUtils.ParseNetstatListeners(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            The method receieves an output of 'netstat' command
+            It parse only the rows in "LISTEN" state
+            Returns a list of information per each "LISTEN" socket
+            Implementation remark:
+            We can't use the .NET API GetActiveTcpListeners since this API returns listeners in all TCP states except the Listen state.
+            That's why we have to parse the netstat output
+            </summary>
+            <param name="content">the output of 'netstat -nlpt' command as expected in Linux</param>
+            /// <param name="localColumn">the number of the column that contains local addresses</param>
+            /// <param name="remoteColumn">the number of the column that contains remote addresses</param>
+            /// <param name="pidColumnNumber">the number of the column that contains PID</param>
+            <returns>A list of information per each "LISTEN" socket</returns>
+        </member>
+    </members>
+</doc>

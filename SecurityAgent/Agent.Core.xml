@@ -1,0 +1,1808 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Agent.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.AgentBase">
+            <summary>
+            A base class for agents
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.AgentBase.CancellationTokenSource">
+            <summary>
+            The application-wide cancellation token
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.AgentBase.IsDisposed">
+            <summary>
+            Indicates if the agent has been disposed
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.AgentBase.EventGenerators">
+            <summary>
+            List of the event generators to be used by the agent;
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.AgentBase.#ctor">
+            <summary>
+            Ctor - creates a new agent harness object
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.AgentBase.Start">
+            <summary>
+            Starts the agent execution
+            Performs required initializations and calls abstract function DoOnStart() to perform any action required by the derived class 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.AgentBase.SetupEventGenerators(Microsoft.Azure.IoT.Agent.Core.Scheduling.TaskScheduler)">
+            <summary>
+            Sets up the generation of events, as defined in the configuration, wit hthe proper intervals between them, to avoid overloading the system
+            </summary>
+            <param name="scheduler">The scheduler to setup the event generators in</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.AgentBase.DoOnStart">
+            <summary>
+            This function will be called when the agent starts
+            Implement here all the required actions before start
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.AgentBase.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.AgentBase.UnhandledExceptionHandler(System.Object,System.UnhandledExceptionEventArgs)">
+            <summary>
+            Report an error when an exception goes unhandled
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.AgentBase.Stop(System.Object,System.EventArgs)">
+            <summary>
+            Stop the agent execution
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.AgentBase.Dispose(System.Boolean)">
+            <summary>
+            Disposing the object
+            </summary>
+            <param name="disposing">Flag indicating dispose state</param>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.Counter">
+            <summary>
+            Thread safe counter
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.Counter.Increment">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.Counter.IncrementBy(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.Counter.GetCountAndReset">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.CounterType">
+            <summary>
+            Types of agent performance counters
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.CounterType.MessagesUnder4KB">
+            <summary>
+            Messages small than 4Kb
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.CounterType.DroppedHighPriorityEvent">
+            <summary>
+            Dropped high priority events
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.CounterType.EnqueuedHighPriorityEvent">
+            <summary>
+            Enqueued high priority events
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.CounterType.DroppedLowPriorityEvent">
+            <summary>
+            Dropped low priority events
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.CounterType.EnqueuedLowPriorityEvent">
+            <summary>
+            Enqueued low priority events
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.CounterType.DroppedOperationalEvent">
+            <summary>
+            Dropped operational events
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.CounterType.EnqueuedOperationalEvent">
+            <summary>
+            Enqueued operational events
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.CounterType.SendSuccesfully">
+            <summary>
+            Sent succesfully messages
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.CounterType.SendFailed">
+            <summary>
+            Failed to send messages
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.ICounter">
+            <summary>
+            Counter interface
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.ICounter.Increment">
+            <summary>
+            Increase count by 1
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.ICounter.IncrementBy(System.Int32)">
+            <summary>
+            Increase count by the given amount (can be negative)
+            </summary>
+            <param name="amount">the amount to increase</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.ICountProvider.GetCountAndReset">
+            <summary>
+            Gets the counter data
+            </summary>
+            <returns>count</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.TelemetryCollector">
+            <summary>
+            Manages all agent telemetry counters
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.TelemetryCollector.GetCounter(Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.CounterType)">
+            <summary>
+            Gets the counter of counter type
+            </summary>
+            <returns>The counter</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.TelemetryCollector.GetDataAndReset">
+            <summary>
+            Gets the data from all the counters and resets them to their default value
+            </summary>
+            <returns>A dictionary mapped with counter type to the counted value</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.TelemetryCollector.Get(Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.CounterType)">
+            <summary>
+            Gets the corresponding counter
+            </summary>
+            <param name="counterType">The counter type to get</param>
+            <returns>ICounter</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Configuration.AgentConfigutationChanged">
+            <summary>
+            Agent configuration changed event
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Configuration.AgentConfiguration">
+            <summary>
+            This class loads the agent configuration (not including local conf reads from a local file - TBD).
+            The configuration are hard-coded and can be overwritten by the remote configuration
+            Singleton implementation.
+            Init() MUST be called before any other method is called (throwing Exception otherwise)
+            </summary>
+        </member>
+        <member name="E:Microsoft.Azure.IoT.Agent.Core.Configuration.AgentConfiguration.AgentConfigurationChanged">
+            <summary>
+            Event handlers for AgentConfigurationChanged
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Configuration.AgentConfiguration._remoteConfiguration">
+            <summary>
+            The class that holds the configuration with their default values
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Configuration.AgentConfiguration.Init">
+            <summary>
+            Loads the initial configuration of the agent.
+            This function should be called once when the agent starts.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Configuration.AgentConfiguration.IsInitialized">
+            <summary>
+            Returns true if the configuration were initialized
+            </summary>
+            <returns>bool _isInitialized </returns>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.AgentConfiguration.RemoteConfiguration">
+            <summary>
+            Return the configurations from the remote configuration or their default values if they are not included in it
+            </summary>
+            <returns><see cref="P:Microsoft.Azure.IoT.Agent.Core.Configuration.AgentConfiguration.RemoteConfiguration"/> object</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Configuration.AgentConfiguration.GetEventPriority``1">
+            <summary>
+            Returns the priority of the event
+            The priority is determine by a default value but can be overwritten by the remote configuration
+            </summary>
+            <typeparam name="TEvent">The name of the event</typeparam>
+            <returns>EventPriority</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">In case the event name is not defined in EventPrioritiesConfiguration</exception>
+            <exception cref="T:System.InvalidOperationException">In case the method was called before Init() was called - should not happen in a normal flow of the agent</exception>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.EventGeneratorsConfig">
+            <summary>
+            Reperesent an EventGenerator configuration entity.
+            This class corresponds to a <add Name="value" Dll="value"/> line in the App.Config file under EventGenerators section
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.EventGeneratorsConfig.Name">
+            <summary>
+            The fully qualified name of the event generator
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.EventGeneratorsConfig.Dll">
+            <summary>
+            The dll containing the event generator
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.EventGeneratorsConfigElementsCollection">
+            <summary>
+            A configuration collection of event generator configuration elements
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.EventGeneratorsConfigElementsCollection.CreateNewElement">
+            <summary>
+            Creates a new EventGeneratorsConfig elemnt
+            </summary>
+            <returns>New event configuration element</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.EventGeneratorsConfigElementsCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Returns the key of the given element
+            </summary>
+            <param name="element">Event generator configuration elemnt</param>
+            <returns>The name of the event generator</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.EventGeneratorsConfigurationSection">
+            <summary>
+            Handler for the EventGenrators configuration section in the App.Config
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.EventGeneratorsConfigurationSection.Configuration">
+            <summary>
+            Get the App.Config EventGenerators configuration section
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.EventGeneratorsConfigurationSection.ConfigurationCollection">
+            <summary>
+            Get this event generator configuration elements collection
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.EventGeneratorsConfigurationSection.ConfigurationElements">
+            <summary>
+            Get all event genrator configurations from this configuration section
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.ExternalInterfaceConfig">
+            <summary>
+            Configuration related to the agent's external interface
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.ExternalInterfaceConfig.FacadeTypeKey">
+            <summary>
+            The fixed name of the ExternalInterfaceFacadeType key
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.ExternalInterfaceConfig.FacadeType">
+            <summary>
+            Gets the type to be used as the facade for the external interface
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.ExternalInterfaceConfig.#ctor(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Ctor
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig">
+            <summary>
+            Holds the basic agent configuration 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.AgentIdKey">
+            <summary>
+            The fixed name of the AgentId key
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.ReadRemoteConfigurationTimeoutKey">
+            <summary>
+            The fixed name of the ReadRemoteConfiguratioTimeout key
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.SchedulerIntervalKey">
+            <summary>
+            The fixed name of the SchedulerInternal key
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.ProducerIntervalKey">
+            <summary>
+            The fixed name of the ProducerInternal key
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.ConsumerIntervalKey">
+            <summary>
+            The fixed name of the ConsumerInterval key
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.HighPriorityQueueSizePercentageKey">
+            <summary>
+            The fixed name of the HighPriorityQueueSizePercentage key
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.LogLevelKey">
+            <summary>
+            The fixed name of the LogLevel key
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.DiagnosticVerbosityLevelKey">
+            <summary>
+            The fixed name of the DiagnosticVerbosityLevel key
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.LogFilePathKey">
+            <summary>
+            The fixed name of the LogFilePath key
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.DefaultEventPriorityKey">
+            <summary>
+            The fixed name of the FefaultEventPriority key
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.FileLogLevelKey">
+            <summary>
+            The fixed name of FileLogLevel key
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.ReadRemoteConfigurationTimeout">
+            <summary>
+            Gets the time to wait for remote configuration to load
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.SchedulerInterval">
+            <summary>
+            Gets the interval between each scheduler executions
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.ProducerInterval">
+            <summary>
+            Gets the interval between each producer task execution
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.ConsumerInterval">
+            <summary>
+            Gets the interval between each consumer task execution
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.HighPriorityQueueSizePercentage">
+            <summary>
+            Gets the percentage that the high priority queue should occupy from the total alloted size of the queue
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.AgentId">
+            <summary>
+            Gets the agent id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.LogLevel">
+            <summary>
+            Gets the log level of the agent
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.DiagnosticVerbosityLevel">
+            <summary>
+            The level at which or above we send a diagnostic event from the logger
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.LogFilePath">
+            <summary>
+            Gets the path to the log file
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.DefaultEventPriority">
+            <summary>
+            Gets the default event priority that will be used when not specified by the remote configuration
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.FileLogLevel">
+            <summary>
+            Gets the file log level of the agent
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.LowPriorityQueueSizePercentage">
+            <summary>
+            Gets the percentage that the low priority queue should occupy from the total alloted size of the queue
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Configuration.ConfigurationSectionHandlers.GeneralConfig.#ctor(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Constructor that is initialized from a given configuration 
+            </summary>
+            <param name="nameValueCollection">nameValueCollection represents the user configuration</param>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Configuration.Constants">
+            <summary>
+            Agent constants
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Configuration.Constants.OptimalMessageSizeMultipleInKb">
+            <summary>
+            Optimal message multiple size in kb
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Configuration.FailedToParseConfiguration">
+            <summary>
+            Agent configuration failed to parse remote configuration
+            </summary>
+            <param name="configurations">failed to parse configurations</param>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfigurationChangedEventHandler">
+            <summary>
+            Configuration had changed
+            </summary>
+            <param name="newConfiguration">The new configuration</param>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Configuration.IRemoteConfigurationProvider">
+            <summary>
+            Represents a <see cref="T:Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfiguration"/> provider
+            </summary>
+        </member>
+        <member name="E:Microsoft.Azure.IoT.Agent.Core.Configuration.IRemoteConfigurationProvider.RemoteConfigurationChanged">
+            <summary>
+            Event that notifies about configuration updates
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Configuration.IRemoteConfigurationProvider.GetRemoteConfigurationData">
+            <summary>
+            Returns the latest <see cref="T:Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfiguration"/> state
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="E:Microsoft.Azure.IoT.Agent.Core.Configuration.IRemoteConfigurationProvider.FailedToParseConfiguration">
+            <summary>
+            Event handlers for FailedToParseConfiguration
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Configuration.LocalConfiguration">
+            <summary>
+            Provides configuration from local configuration file
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.LocalConfiguration.AgentVersion">
+            <summary>
+            Gets the agent version
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.LocalConfiguration.EventGenerators">
+            <summary>
+            Gets the event generators configurations
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.LocalConfiguration.General">
+            <summary>
+            Agent related configuration
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.LocalConfiguration.ExternalInterface">
+            <summary>
+            External interface related configuration
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Configuration.LocalConfiguration.#cctor">
+            <summary>
+            Initiate fields 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfiguration">
+            <summary>
+            Represents the agent RemoteConfiguration - hard coded keys and their default values
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfiguration.HighPriorityMessageFrequency">
+            <summary>
+            The interval upon which messages with level "High" should be sent 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfiguration.LowPriorityMessageFrequency">
+            <summary>
+            The interval upon which messages with level "Low" should be sent 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfiguration.SnapshotFrequency">
+            <summary>
+            The interval upon which messages of type "snapshot" should be sent 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfiguration.MaxLocalCacheSize">
+            <summary>
+            The maximum cache size for the event queues
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfiguration.MaxMessageSize">
+            <summary>
+            Maximum size of the message that is sent to the hub
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfiguration.Diagnostic">
+            <summary>
+            Diagnostic event with its default priority
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfiguration.ConfigurationError">
+            <summary>
+            ConfigurationError event with its default priority
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfiguration.DroppedEventsStatistics">
+            <summary>
+            DroppedEventsStatistics event with its default priority
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfiguration.MessageStatistics">
+            <summary>
+            MessageStatistics event with its default priority
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfiguration.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfigurationPnPConverter">
+            <summary>
+            Converts remote configuration properties
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfigurationPnPConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfigurationPnPConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfigurationPnPConverter.CanConvert(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Diagnostics.DiagnosticVerbosity">
+            <summary>
+            The verbosity of diagnostic events 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Diagnostics.DiagnosticVerbosity.None">
+            <summary>
+            None - no diagnostic events will be sent
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Diagnostics.DiagnosticVerbosity.Some">
+            <summary>
+            Some - only some (important) logs will be sent as diagnostic events
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Diagnostics.DiagnosticVerbosity.All">
+            <summary>
+            All - all logs will be sent as diagnostic events, regardless of log verbosity
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.EventGeneration.AgentConfigurationErrorEventGenerator">
+            <summary>
+            Operational event generator for configuration error evens
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.AgentConfigurationErrorEventGenerator.#ctor">
+            <summary>
+            C-tor
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.EventGeneration.AgentConfigurationErrorEventGenerator.Priority">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.AgentConfigurationErrorEventGenerator.GetEvents">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.AgentConfigurationErrorEventGenerator.CreateTypeMismatchEvent(System.Collections.Generic.IList{System.String})">
+            <summary>
+            Event handler for OnFailedToParseConfiguration
+            </summary>
+            <param name="mismatchedTypeConfigurations">failed to parse configurations</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.AgentConfigurationErrorEventGenerator.ValidatAgentConfiguration(Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfiguration)">
+            <summary>
+            Validates agent configuration make sense
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.AgentConfigurationErrorEventGenerator.RemoveEvents">
+            <summary>
+            Removes all of the accumulated events
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.AgentConfigurationErrorEventGenerator.ValidateMaxMessageSize(Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfiguration,Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.ConfigurationErrorPayload@)">
+            <summary>
+            Validate maxMessageSize is multiple of 4Kb
+            </summary>
+            <param name="remoteConfiguration">Configuration to validate</param>
+            <param name="configurationErrorPayload">configuration error payload</param>
+            <returns>true if valid</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.AgentConfigurationErrorEventGenerator.ValidateMaxCacheSize(Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfiguration,Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.ConfigurationErrorPayload@)">
+            <summary>
+            Validate maxCacheSize > maxMessageSize
+            </summary>
+            <param name="remoteConfiguration">Configuration to validate</param>
+            <param name="configurationErrorPayload">configurationErrorPayload</param>
+            <returns>true if valid</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.AgentConfigurationErrorEventGenerator.ValidateIntervals(Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfiguration,Microsoft.Azure.IoT.Contracts.Events.OperationalEvents.Payloads.ConfigurationErrorPayload@)">
+            <summary>
+            Validate HighPriorityIntervals is lower or equal to LowPriorityInterval
+            </summary>
+            <param name="remoteConfiguration">Configuration to validate</param>
+            <param name="configurationErrorPayload"></param>
+            <returns>true if valid</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.EventGeneration.AgentTelemetryEventGenerator">
+            <summary>
+            Event generator for agent telemetry
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.EventGeneration.AgentTelemetryEventGenerator.Priority">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.AgentTelemetryEventGenerator.GetEventsImpl">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.AgentTelemetryEventGenerator.GenerateTelemetryEventsFromCounterData(System.Collections.Generic.IDictionary{Microsoft.Azure.IoT.Agent.Core.AgentTelemetry.CounterType,System.Int32})">
+            <summary>
+            Generates telemetry events from the given data
+            </summary>
+            <param name="counterData"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.EventGeneration.AggregatedEventsGenerator`1">
+            <summary>
+            Base class for agrregated events events generator
+            This event generator decorates a "regular" event generator and aggregates the events produced by this event generator
+            Aggregation type is count agrregation
+            </summary>
+            <typeparam name="TPayload">The payload of the aggregated event</typeparam>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.EventGeneration.AggregatedEventsGenerator`1.AggregationEnabled">
+            <summary>
+            Is aggregation enabled
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.EventGeneration.AggregatedEventsGenerator`1.AggregationInterval">
+            <summary>
+            Agrregation interval
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.EventGeneration.AggregatedEventsGenerator`1.PayloadComparer">
+            <summary>
+            Compares between similar event, agrregation will count equal payloads according to this comparer
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.AggregatedEventsGenerator`1.CreateAggregatedEvent(`0,System.Int32,System.DateTime,System.DateTime)">
+            <summary>
+            Create new aggregated event from the given payload
+            The method is responsible for cleaning up any non aggregated data
+            (i.e if aggregation is based on fields x,y remove field z from the event)
+            </summary>
+            <param name="payload">the payload to create the event from</param>
+            <param name="hitCount">payload hit count</param>
+            <param name="startTime">aggregation start time</param>
+            <param name="endTime">aggregation end time</param>
+            <returns>new aggregated event</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.AggregatedEventsGenerator`1.#ctor(Microsoft.Azure.IoT.Agent.Core.EventGeneration.EventGenerator[])">
+            <summary>
+            C-tor
+            </summary>
+            <param name="eventGenerator">event generator for generating events to be aggregated</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.AggregatedEventsGenerator`1.GetEvents">
+            <inheritdoc />>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.EventGeneration.DiagnosticEventGenerator">
+            <summary>
+            Event generator for diagnostic events
+            This event generator collects all system diagnostic events
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.EventGeneration.DiagnosticEventGenerator.Priority">
+            <inheritdoc />
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.EventGeneration.DiagnosticEventGenerator._internalBuffer">
+            <summary>
+            Internal buffer to hold diagnostic events
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.EventGeneration.DiagnosticEventGenerator.QueueSizePercentage">
+            <summary>
+             The fraction of size from the total amount of space allocated for the agent queues
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.DiagnosticEventGenerator.#ctor">
+            <summary>
+            C-tor
+            Registers to System DiagnosticEvent
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.DiagnosticEventGenerator.GetEvents">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.EventGeneration.EventGenerator">
+            <summary>
+            Event generator base class that provides common logic
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.EventGeneration.EventGenerator.Priority">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.EventGenerator.GetEvents">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.EventGenerator.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.EventGeneration.EventGeneratorProviderBase">
+            <summary>
+            A base class for the various implementations of EventGeneratorProvider in different platforms
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.EventGeneration.EventGeneratorProviderBase.EventGenerators">
+            <summary>
+            The list of resolved event generators
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.EventGeneration.EventGeneratorProviderBase.IsLoaded">
+            <summary>
+            A flag indicating if the resolution list is already loaded
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.EventGeneratorProviderBase.GetAll">
+            <summary>
+            Returns all resolved event generators
+            </summary>
+            <returns>The list of event generators</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.EventGeneratorProviderBase.Load">
+            <summary>
+            Resolves and loads all registered event generators
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.EventGeneration.EventProducer">
+            <summary>
+            Event producer that collects events from all event generators on schedule
+            and stores them into the shared queue
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.EventGeneration.EventProducer._eventGenerators">
+            <summary>
+            Event generators for be used for event production
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.EventProducer.#ctor(Microsoft.Azure.IoT.Contracts.Events.IEventGenerator[])">
+            <summary>
+            Ctor - creates a new event producer object with the given EventGenerator provider
+            </summary>
+            <param name="eventGenerators">Event generators to use for event production</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.EventProducer.ExecuteTask">
+            <summary>
+            The task interface method for executing the event producer work on schedule
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.EventGeneration.IEventGeneratorProvider">
+            <summary>
+            An interface for a class that provides a list of event generators, intended to be implemented on various platforms
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.IEventGeneratorProvider.GetAll">
+            <summary>
+            Get all events generators
+            </summary>
+            <returns>List of event generators</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.EventGeneration.SnapshotEventGenerator">
+            <summary>
+            A base class for snapshot event generators
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.SnapshotEventGenerator.GetEvents">
+            <summary>
+            Generates the snapshot
+            </summary>
+            <returns>A list containing the snapshot, there should be a single event in the list
+            an empty list is returned if time since last snapshot is less than snapshot frequency configuration</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.EventGeneration.SnapshotEventGenerator.GetEventsImpl">
+            <summary>
+            Actual implementation of get events
+            </summary>
+            <returns>A list containing the snapshot, there should be a single event in the list</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Exceptions.AgentException">
+            <summary>
+            Base class for agent fatal exceptions
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Exceptions.AgentException.ExceptionCode">
+            <summary>
+            Exception code
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Exceptions.AgentException.ExceptionSubCode">
+            <summary>
+            Exception sub code
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Exceptions.AgentException.ExtraInfo">
+            <summary>
+            Exception extran info
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Exceptions.AgentException.Message">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Exceptions.AgentException.#ctor(Microsoft.Azure.IoT.Agent.Core.Exceptions.ExceptionCodes,Microsoft.Azure.IoT.Agent.Core.Exceptions.ExceptionSubCodes,System.String)">
+            <summary>
+            C-tor
+            </summary>
+            <param name="exceptionCode">Exception code</param>
+            <param name="exceptionSubCode">Exception sub code</param>
+            <param name="extraInfo">Exception extra info</param>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Exceptions.CommandExecutionFailedException">
+            <summary>
+            Represents an exceptional state when trying to execute a command
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Exceptions.CommandExecutionFailedException.Command">
+            <summary>
+            The command that was executed
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Exceptions.CommandExecutionFailedException.Error">
+            <summary>
+            The error output corresponding to the failure
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Exceptions.CommandExecutionFailedException.ExitCode">
+            <summary>
+            The exit code of the command
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Exceptions.CommandExecutionFailedException.Message">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Exceptions.CommandExecutionFailedException.#ctor(System.String,System.Int32,System.String)">
+            <summary>
+            C-tor 
+            </summary>
+            <param name="command">The command that caused the error</param>
+            <param name="exitCode">Process exit code</param>
+            <param name="error">Error message</param>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Exceptions.ExceptionCodes">
+            <summary>
+            Agent exception codes and subcodes.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Exceptions.ExceptionSubCodes">
+            <summary>
+            Exception sub codes
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Exceptions.ExceptionCodesExtension">
+            <summary>
+            Extension methods for agent exceptions
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Exceptions.ExceptionCodesExtension.GetDescription(Microsoft.Azure.IoT.Agent.Core.Exceptions.ExceptionCodes)">
+            <summary>
+            Gets description of error code
+            </summary>
+            <param name="error">the error code</param>
+            <returns>error description</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Exceptions.ExceptionCodesExtension.GetDescription(Microsoft.Azure.IoT.Agent.Core.Exceptions.ExceptionSubCodes)">
+            <summary>
+            Gets description of error sub code
+            </summary>
+            <param name="error">the error sub code</param>
+            <returns>error descriptio</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Logging.LogLevel">
+            <summary>
+            The log level of the agent or an individual log message
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Logging.LogLevel.Off">
+            <summary>
+            Used to turn off logging
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Logging.LogLevel.Fatal">
+            <summary>
+            Fatal, messages with this level indicate an error that prevents the agent from running
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Logging.LogLevel.Error">
+            <summary>
+            Error, messages with this level indicate a failure to do something
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Logging.LogLevel.Warning">
+            <summary>
+            Warning, messages with this level indicate a possibility for a problematic state
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Logging.LogLevel.Information">
+            <summary>
+            Information, general information about the execution of the agent
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Logging.LogLevel.Debug">
+            <summary>
+            Debug, more verbose information about the execution of the agent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Logging.SimpleLogger">
+            <summary>
+            A very simple logger class to be used for initial debugging
+            TODO: replace with other more advanced logging method
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Logging.SimpleLogger.Debug(System.String,System.Boolean)">
+            <summary>
+            Log a debug message
+            </summary>
+            <param name="message">the log line</param>
+            <param name="sendAsDiagnostic">whether or not go generate a diagnostic event due to this log</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Logging.SimpleLogger.Information(System.String,System.Boolean)">
+            <summary>
+            Log an Information message
+            </summary>
+            <param name="message">The log line</param>
+            <param name="sendAsDiagnostic">whether or not go generate a diagnostic event due to this log</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Logging.SimpleLogger.Warning(System.String,System.Boolean,System.Exception)">
+            <summary>
+            Log a warning message
+            </summary>
+            <param name="message">The log line</param>
+            <param name="sendAsDiagnostic">whether or not go generate a diagnostic event due to this log</param>
+            <param name="exception">The exception, if any</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Logging.SimpleLogger.Error(System.String,System.Boolean,System.Exception)">
+            <summary>
+            Log an error message
+            </summary>
+            <param name="message">The log line</param>
+            <param name="sendAsDiagnostic">whether or not go generate a diagnostic event due to this log</param>
+            <param name="exception">The exception, if any</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Logging.SimpleLogger.Fatal(System.String,System.Boolean,System.Exception)">
+            <summary>
+            Log a fatal error message
+            </summary>
+            <param name="message">The log line</param>
+            <param name="sendAsDiagnostic">whether or not go generate a diagnostic event due to this log</param>
+            <param name="exception">The exception, if any</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Logging.SimpleLogger.CleanupLogger">
+            <summary>
+            Clean up logger resources
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Logging.SimpleLogger.Log(System.String,Microsoft.Azure.IoT.Agent.Core.Logging.LogLevel,System.Boolean,System.Exception)">
+            <summary>
+            Logs a message according to the LogLevel, 
+            Also sends an operational event according to DiagnosticEventLevel
+            </summary>
+            <param name="message">The log line</param>
+            <param name="level">The level at which to log this message</param>
+            <param name="sendAsDiagnostic">whether or not go generate a diagnostic event due to this log</param>
+            <param name="exception">The exception, if any</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Logging.SimpleLogger.SendDiagnosticEvent(System.String,Microsoft.Azure.IoT.Agent.Core.Logging.LogLevel,System.Guid)">
+            <summary>
+            Send a diagnostic event corresponding to a log
+            </summary>
+            <param name="message">The message</param>
+            <param name="level">The severity level of the diagnostic event</param>
+            <param name="correlationId">current correlation id</param>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.MessageWorker.AgentMessage">
+            <summary>
+            Represents an agent message that will be sent to the hub
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.MessageWorker.AgentMessage.AgentVersion">
+            <summary>
+            The version of the client
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.MessageWorker.AgentMessage.AgentId">
+            <summary>
+            The Id of the agent that is sending the message
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.MessageWorker.AgentMessage.MessageSchemaVersion">
+            <summary>
+            The version of the message schema that this message implements
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.MessageWorker.AgentMessage.Events">
+            <summary>
+            The list of events to put in the message body
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.AgentMessage.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Azure.IoT.Contracts.Events.IEvent},System.Guid,System.String)">
+            <summary>
+            Ctor - creates a new agent message object
+            </summary>
+            <param name="events">The list of events to put in the message body</param>
+            <param name="agentId">The Id of the agent that is sending the message</param>
+            <param name="agentVersion">The version of the client</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.AgentMessage.GetMessageBodyBuffer">
+            <summary>
+            Compiles the message body buffer from the events
+            </summary>
+            <returns>The message body text (JSON)</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.AgentMessage.GetPrintableMessage">
+            <summary>
+            Retruns Indented Json string that represents the entire message
+            Note: use for debug purposes
+            </summary>
+            <returns>The message body indented text (JSON)</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.MessageWorker.Clients.ExternalInterfaceFacade">
+            <summary>
+            Represents the external interface facade singleton
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.MessageWorker.Clients.ExternalInterfaceFacade._instance">
+            <summary>
+            A static instance of the facade
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.Clients.ExternalInterfaceFacade.CreateInstance">
+            <summary>
+            Creates the facade instance according to the configured type
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.MessageWorker.Clients.ExternalInterfaceFacade.Instance">
+            <summary>
+            Gets the singleton instance
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.Clients.ExternalInterfaceFacade.DisposeInstance">
+            <summary>
+            Disposes the singleton instance
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.MessageWorker.Clients.IExternalInterface">
+            <summary>
+            Represents a facade to the external interface. Exposes functionality dependent on the external interface
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.MessageWorker.Clients.IExternalInterface.RemoteConfigurationProvider">
+            <summary>
+            Gets a provider for <see cref="T:Microsoft.Azure.IoT.Agent.Core.Configuration.RemoteConfiguration"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.MessageWorker.Clients.IExternalInterface.ExternalClient">
+            <summary>
+            Gets a client to the external interface
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueue">
+            <summary>
+            Stores a queue of events with a maximal size
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueue.TotalQueueEventSize">
+            <summary>
+            Gets the accumulated size of all the events stored in the queue
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueue.MaxQueueEventSize">
+            <summary>
+            The maximal allowed accumulated size of all the events in the queue
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueue._internalQueue">
+            <summary>
+            The internal queue that holds the events
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueue._precentageOfTotalQueueSize">
+            <summary>
+            The fractional amount of memory out of the total memory allocated for the queues, that this queue is allowed to consume
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueue._queueLock">
+            <summary>
+            Lock object for access to the queue
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueue.#ctor(System.Double)">
+            <summary>
+            Ctor - creates a new event queue object
+            </summary>
+            <param name="precentageOfTotalQueueSize">
+            The fraction of size from the total amount of space allocated for the queues that
+            this queue should occupy
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueue.Enqueue(Microsoft.Azure.IoT.Contracts.Events.IEvent)">
+            <summary>
+            Add new event to the queue
+            </summary>
+            <param name="ev">The event to add</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueue.Dequeue">
+            <summary>
+            Dequeue a single event
+            </summary>
+            <returns>The removed event or null if no event is available</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueue.DequeueIf(System.Predicate{Microsoft.Azure.IoT.Contracts.Events.IEvent})">
+            <summary>
+            Dequeue a single event if the event satisfy the predicate
+            </summary>
+            <param name="predicate">Predicate</param>
+            <returns>The removed event or null if event does not satisfy the predicate or no event available</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueue.Peek">
+            <summary>
+            Peek into the head of the queue
+            </summary>
+            <returns>The event at the head of the queue or null if the queue is empty</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueue.IsEmpty">
+            <summary>
+            Is the queue empty
+            </summary>
+            <returns>true if the queue empty</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueue.UnsafeDequeue">
+            <summary>
+            Common method for dequeuing events (not thread safe)
+            </summary>
+            <returns>The extracted event or null</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueue.UnsafePeek">
+            <summary>
+            Peek into the head of the queue (not thread safe)
+            </summary>
+            <returns>The event at the head of the queue or null if the queue is empty</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventDropped">
+            <summary>
+            Event dropped from queue system notification
+            </summary>
+            <param name="priority">event priority</param>
+            <param name="amount">amount of events</param>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventEnqueued">
+            <summary>
+            Event enqueued to queue system notification
+            </summary>
+            <param name="priority">event priority</param>
+            <param name="amount">amount of events</param>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueueManager">
+            <summary>
+            Manages multiple event queues with different priorities
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueueManager._eventQueues">
+            <summary>
+            The event queues by event priority
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueueManager.Instance">
+            <summary>
+            The instance of the EventQueueManager singleton
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueueManager.OperationalQueueSizePercentage">
+            <summary>
+             The fraction of size from the total amount of space allocated for the agent queues
+            </summary>
+        </member>
+        <member name="E:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueueManager.EventDroppedHandlers">
+            <summary>
+            Event dropped from queue notification handlers
+            </summary>
+        </member>
+        <member name="E:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueueManager.EventEnqueuedHandlers">
+            <summary>
+            Event enqueued notification handlers
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueueManager.ResetInstance">
+            <summary>
+            Resets the instance, used in tests 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueueManager.#ctor">
+            <summary>
+            Ctor - initialize a new event queue manager object
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueueManager.EnqueueEvents(System.Collections.Generic.IEnumerable{Microsoft.Azure.IoT.Contracts.Events.IEvent})">
+            <summary>
+            Enqueue new events
+            </summary>
+            <param name="events">The list of events to add</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueueManager.AvailableDataSize">
+            <summary>
+            Returns the amount of available data across all queues
+            </summary>
+            <returns>The size of available data</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueueManager.DequeueFromSingleQueue(Microsoft.Azure.IoT.Contracts.Events.EventPriority,System.UInt32,System.Collections.Generic.List{Microsoft.Azure.IoT.Contracts.Events.IEvent}@)">
+            <summary>
+            Dequeue available events from the queue of the given priority up to the max requested size
+            </summary>
+            <param name="queuePriority">The priority to start with</param>
+            <param name="maxSize">The max size to return</param>
+            <param name="dequeuedEvents">Output of the dequeued events</param>
+            <returns>The actual size retrieved</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueueManager.DequeueEventsFromMultipleQueues(Microsoft.Azure.IoT.Contracts.Events.EventPriority,System.UInt32,System.Collections.Generic.List{Microsoft.Azure.IoT.Contracts.Events.IEvent}@)">
+            <summary>
+            Dequeue available events, starting with preferred priority and adding from other priority if
+            there is still space remaining up to the max requested size.
+            </summary>
+            <param name="preferredPriority">The priority to start with</param>
+            <param name="maxSize">The max size to return</param>
+            <param name="dequeuedEvents">Output of the dequeued events</param>
+            <returns>The actual size retrieved</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueueManager.OnEventDropped(Microsoft.Azure.IoT.Contracts.Events.EventPriority,System.Int32)">
+            <summary>
+            Handle event dropped
+            </summary>
+            <param name="priority">event priority</param>
+            <param name="amount">amount of events</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueueManager.OnEventEnqueued(Microsoft.Azure.IoT.Contracts.Events.EventPriority,System.Int32)">
+            <summary>
+            Handle enqueued event notification
+            </summary>
+            <param name="priority">event priority</param>
+            <param name="amount">amount of events</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.EventQueueManager.GetOppositePriority(Microsoft.Azure.IoT.Contracts.Events.EventPriority)">
+            <summary>
+            Translates the opposite priority (from high to low and from low to high)
+            </summary>
+            <param name="priority">The given priority</param>
+            <returns>The opposite priority</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.MessageWorker.MessageBuilder">
+            <summary>
+            Consumes events from the shared event queue on schedule and builds messages
+            to be sent to the hub
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.MessageWorker.MessageBuilder._lastHighPrioritySendTime">
+            <summary>
+            The last time a high priority event was sent
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.MessageWorker.MessageBuilder._lastLowPrioritySendTime">
+            <summary>
+            The last time a low priority event was sent
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.MessageBuilder.ExecuteTask">
+            <summary>
+            The task interface method for executing the message builder work on schedule
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.MessageBuilder.BuildMessages">
+            <summary>
+            Build messages from events in the queue and send them to the hub
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.MessageBuilder.DequeueMessagesAndSendAsync(Microsoft.Azure.IoT.Contracts.Events.EventPriority,System.UInt32)">
+            <summary>
+            Dequeue messages from the queue with queuePriority and sends them asynchronously
+            </summary>
+            <param name="queuePriority">Queue priority to dequeue from</param>
+            <param name="maxMessageSize">Max allowed message size to send</param>
+            <returns>Awaitable send message task</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MessageWorker.MessageBuilder.SendMessage(System.Collections.Generic.IEnumerable{Microsoft.Azure.IoT.Contracts.Events.IEvent},Microsoft.Azure.IoT.Contracts.Events.EventPriority)">
+            <summary>
+            Send the message asynchronously
+            </summary>
+            <param name="eventsToSend">The events to send in the message</param>
+            <param name="messagePriority">Message priority</param>
+            <returns>The awaitable task returned by the SDK</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.MultiThreadedAgent">
+            <summary>
+            A multi threaded version of the agent harness
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.MultiThreadedAgent._consumerScheduler">
+            <summary>
+            The task scheduler for the message builder
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.MultiThreadedAgent._producerScheduler">
+            <summary>
+            The task scheduler for the event producer
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MultiThreadedAgent.#ctor">
+            <summary>
+            Ctor - creates a new agent harness object
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.MultiThreadedAgent.DoOnStart">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Providers.AppConfigEventGeneratorsProvider">
+            <summary>
+            A provider class that provides all registered event generators from the App.Config file.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Providers.AppConfigEventGeneratorsProvider.Load">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Scheduling.ActionTask">
+            <summary>
+            A generic task to use with the task scheduler
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Scheduling.ActionTask.#ctor(System.Action)">
+            <summary>
+            Ctor, constructs a generic task
+            </summary>
+            <param name="action">The action this task executes</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Scheduling.ActionTask.ExecuteTask">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Scheduling.ITask">
+            <summary>
+            Interface for a task in the task scheduler
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Scheduling.ITask.ExecuteTask">
+            <summary>
+            Executes the task, should be called by the task scheduler
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Scheduling.TaskScheduler">
+            <summary>
+            A slim and simple task scheduler
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Scheduling.TaskScheduler._listLock">
+            <summary>
+            Lock object for the task list
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Scheduling.TaskScheduler._tasks">
+            <summary>
+            The list of tasks to execute
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Scheduling.TaskScheduler._taskSchedulerThread">
+            <summary>
+            The main thread of the task scheduler (if used for multi-threaded execution)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Scheduling.TaskScheduler.#ctor(System.Threading.CancellationToken)">
+            <summary>
+            Create a task scheduler with a cancellation token
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Scheduling.TaskScheduler.AddTask(Microsoft.Azure.IoT.Agent.Core.Scheduling.ITask,System.TimeSpan,System.DateTime)">
+            <summary>
+            Add new task to the list of executing tasks
+            This could get locked for some time if the scheduler is already running, but we don't expect that to happen
+            </summary>
+            <param name="task">The task to execute</param>
+            <param name="interval">The interval between each task execution</param>
+            <param name="timeToStart">When to start the first execution of the task</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Scheduling.TaskScheduler.Start(System.Boolean)">
+            <summary>
+            Start the task scheduler thread
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Scheduling.TaskScheduler.ExecuteTasks">
+            <summary>
+            Check if the tasks in the list should and execute them
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Scheduling.TaskState">
+            <summary>
+            Represents the state of a task in the task scheduler
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Scheduling.TaskState._nextExecutionTime">
+            <summary>
+            The next execution time for this task
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Scheduling.TaskState._task">
+            <summary>
+            The task to execute
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Scheduling.TaskState._taskInterval">
+            <summary>
+            The interval between two task executions
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Scheduling.TaskState._timeToStart">
+            <summary>
+            The time to begin executing the task
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Scheduling.TaskState.#ctor(Microsoft.Azure.IoT.Agent.Core.Scheduling.ITask,System.TimeSpan,System.DateTime)">
+            <summary>
+            Ctor - creates a new task state object
+            </summary>
+            <param name="task">The task to execute</param>
+            <param name="interval">The interval between two task executions</param>
+            <param name="timeToStart">When to start the first execution of the task</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Scheduling.TaskState.ShouldExecute">
+            <summary>
+            Should this task get executed now
+            </summary>
+            <returns>True if task should execute</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Scheduling.TaskState.ExecuteTask">
+            <summary>
+            Execute the task and update the next execution time
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Scheduling.TaskState.CalculateNextExecutionTime">
+            <summary>
+            Calculate the next execution time
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.SingleThreadedAgent">
+            <summary>
+            A single threaded version of the agent harness
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.SingleThreadedAgent._scheduler">
+            <summary>
+            The task scheduler
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.SingleThreadedAgent.#ctor">
+            <summary>
+            Ctor - creates a new single threaded agent harness
+            All of the tasks are scheduled on the same scheduler
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.SingleThreadedAgent.DoOnStart">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.DiagnosticEvent">
+            <summary>
+            System diagnostic event handler
+            </summary>
+            <param name="message">the diagnostic message</param>
+            <param name="severity">event severiyt</param>
+            <param name="exception">the exception releated to the diagnostic event</param>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.SystemEvents">
+            <summary>
+            System events
+            </summary>
+        </member>
+        <member name="E:Microsoft.Azure.IoT.Agent.Core.SystemEvents.DiagnosticeEvent">
+            <summary>
+            System diagnostic event
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.SystemEvents.DispatchDiagnosicEvent(System.String,Microsoft.Azure.IoT.Agent.Core.Logging.LogLevel,System.Exception)">
+            <summary>
+            Dispatch a new diagnostic event
+            </summary>
+            <param name="message">the diagnostic message</param>
+            <param name="severity">event severity</param>
+            <param name="exception">the exception releated to the diagnostic event</param>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.ThreadContext">
+            <summary>
+            Represents thread execution context
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.ThreadContext.Get">
+            <summary>
+            Get the current thread execution context
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.ThreadContext.Set(Microsoft.Azure.IoT.Agent.Core.ThreadContext)">
+            <summary>
+            Set the current thread execution context
+            </summary>
+            <param name="threadContext">Thread context to set</param>
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.ThreadContext.ExecutionId">
+            <summary>
+            Context execution id
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.ThreadContext.#ctor">
+            <summary>
+            Creates a new context
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Utils.ConfigurationUtils">
+            <summary>
+            Configuration related utilities
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Utils.ConfigurationUtils.AppendToProcessPath(System.String)">
+            <summary>
+            Appends the given path to the current process's path
+            </summary>
+            <param name="path">Relative path</param>
+            <returns>The combined path</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Utils.ConfigurationUtils.IsFullyQualifiedPath(System.String)">
+            <remarks>
+            Should be replaced with Path.IsPathFullyQualified (introduced in .NET Core 2.1)
+            https://docs.microsoft.com/en-us/dotnet/api/system.io.path.ispathfullyqualified?view=netcore-2.1
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Utils.ExceptionExtensions">
+            <summary>
+            Exception extension methods
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Utils.ExceptionExtensions.FormatExceptionMessage(System.Exception,System.String)">
+            <summary>
+            Format an exception and a message into one string
+            </summary>
+            <param name="exception">The exception</param>
+            <param name="message">The message</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Utils.ErrorHandlerResult">
+            <summary>
+            Error handling result
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Utils.ErrorHandlerResult.ErrorHandled">
+            <summary>
+            Error is handled, do not continue invoking error handlers
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.IoT.Agent.Core.Utils.ErrorHandlerResult.ErrorNotHandled">
+            <summary>
+            Error is not handled, invoke the next error handler
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Utils.ErrorHandler">
+            <summary>
+            Delegate for error handling while executing a command
+            If the error is not handled, control passes to the DefaultErrorHandler and throws an error
+            </summary>
+            <param name="errorCode">Process exit code</param>
+            <param name="errorMessage">Error output</param>
+            <param name="command">The command that caused the error</param>
+            <returns>Handler result</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Utils.IProcessUtil">
+            <summary>
+            Helper for executing commands on a linux machine
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Utils.IProcessUtil.ExecuteProcess(System.String,System.String,Microsoft.Azure.IoT.Agent.Core.Utils.ErrorHandler,System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Execute process with its arguments.
+            Note - to execute shell commands use the following:
+            Linux - Agent.EventGenerators.Linux.Utils.LinuxProcessUtil.ExecuteShellCommand
+            For Windows programName="cmd.exe" and arguments should start with "/C"
+            </summary>
+            <param name="programName">Program to execute</param>
+            <param name="args">Program arguments</param>
+            <param name="errorHandler">A handler for process errors</param>
+            <param name="acceptableExitCodesOverride">Exit codes that considerd as OK</param>
+            <returns>Command output</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Utils.IsoTimespanConverter">
+            <summary>
+            <see cref="T:Newtonsoft.Json.JsonConverter"/> for <see cref="T:System.TimeSpan"/> in ISO8601 format
+            Reference: https://github.com/JamesNK/Newtonsoft.Json/issues/863
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Utils.IsoTimespanConverter.CanConvert(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Utils.IsoTimespanConverter.CanRead">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Utils.IsoTimespanConverter.CanWrite">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Utils.IsoTimespanConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Utils.IsoTimespanConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Utils.JsonUtils">
+            <summary>
+            Utilities to handle Json tokens
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Utils.JsonUtils.RemoveKeysWithNullValue(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Remove keys in the Json object that has null values
+            </summary>
+            <param name="jObject">the json object to handle</param>
+            <returns>the given JToken with no keys that have null values</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Utils.JsonUtils.IsEmpty(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Check if Jtoken is null or empty
+            </summary>
+            <param name="token"></param>
+            <returns>true if token is null or empty</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Utils.JsonUtils.GetJsonLabel(System.String,System.Type)">
+            <summary>
+            Gets the json property name of the given property
+            </summary>
+            <param name="propertyName">class property</param>
+            <param name="classType">the class the property belongs to</param>
+            <returns>json property label</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Utils.NameValueCollectionExtensionMethods">
+            <summary>
+            Extension methods for NameValueCollection
+            Methods for value parsing
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Utils.NameValueCollectionExtensionMethods.GetTimeSpanValueThrowOnFail(System.Collections.Specialized.NameValueCollection,System.String)">
+            <summary>
+            Gets the value of the given key as a TimeSpan value
+            </summary>
+            <param name="nameValueCollection">Key Value collection</param>
+            <param name="key">the key to parse</param>
+            <exception cref="T:System.ArgumentNullException">In case the given key is null or empty</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">In case the value can not be parsed</exception>
+            <returns>TimeSpan value of the given key</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Utils.NameValueCollectionExtensionMethods.GetStringValueThrowOnFail(System.Collections.Specialized.NameValueCollection,System.String)">
+            <summary>
+            Gets the value of the given key as a string value
+            </summary>
+            <param name="nameValueCollection">Key Value collection</param>
+            <param name="key">the key to parse</param>
+            <exception cref="T:System.ArgumentNullException">In case the given key is null or empty</exception>
+            <returns>string value of the given key</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Utils.NameValueCollectionExtensionMethods.GetGuidValueThrowOnFail(System.Collections.Specialized.NameValueCollection,System.String)">
+            <summary>
+            Gets the value of the given key as a Guid value
+            </summary>
+            <param name="nameValueCollection">Key Value collection</param>
+            <param name="key">the key to parse</param>
+            <exception cref="T:System.ArgumentNullException">In case the given key is null or empty</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">In case the value can not be parsed</exception>
+            <returns>Guid value of the given key</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Utils.NameValueCollectionExtensionMethods.GetDoubleValueThrowOnFail(System.Collections.Specialized.NameValueCollection,System.String)">
+            <summary>
+            Gets the value of the given key as a double value
+            </summary>
+            <param name="nameValueCollection">Key Value collection</param>
+            <param name="key">the key to parse</param>
+            <exception cref="T:System.ArgumentNullException">In case the given key is null or empty</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">In case the value can not be parsed</exception>
+            <returns>double value of the given key</returns>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Utils.NameValueCollectionExtensionMethods.GetEnumValueThrowOnFail``1(System.Collections.Specialized.NameValueCollection,System.String)">
+            <summary>
+            Gets the value of the given key as a Enum value
+            </summary>
+            <param name="nameValueCollection">Key Value collection</param>
+            <param name="key">the key to parse</param>
+            <exception cref="T:System.ArgumentNullException">In case the given key is null or empty</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">In case the value can not be parsed</exception>
+            <returns>Enum value of the given key</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Utils.ProcessUtil">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Azure.IoT.Agent.Core.Utils.ProcessUtil.Instance">
+            <summary>
+            Singleton instance
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Utils.ProcessUtil.ExecuteProcess(System.String,System.String,Microsoft.Azure.IoT.Agent.Core.Utils.ErrorHandler,System.Collections.Generic.IEnumerable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Utils.Retry">
+            <summary>
+            Used to retry an action according to a predefined retry policy.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Utils.Retry.Do(System.Action,Microsoft.Azure.Devices.Client.IRetryPolicy)">
+            <summary>
+            Runs a given action according to a retry policy.
+            </summary>
+            <param name="action">The action to run</param>
+            <param name="retryPolicy">The retry policy</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Utils.Retry.Do``1(System.Func{``0},Microsoft.Azure.Devices.Client.IRetryPolicy)">
+            <summary>
+            Runs a given action according to a retry policy with return value.
+            </summary>
+            <typeparam name="T">The action's return type</typeparam>
+            <param name="action">The action to run</param>
+            <param name="retryPolicy">The retry policy</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Utils.StringExtensions">
+            <summary>
+            String extension methods
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Utils.StringExtensions.SplitStringOnNewLine(System.String)">
+            <summary>
+            Splits the given string on new lines
+            </summary>
+            <param name="str">String to split</param>
+            <returns>Array of strings, each string is a line from the given string</returns>
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.Core.Utils.ThreeStageBackoff">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Utils.ThreeStageBackoff.#ctor(System.Int32,System.TimeSpan,System.Int32,System.TimeSpan,System.TimeSpan)">
+            <summary>
+            A retry policy which retries indefinitely with 3 stages of backoff durations.
+            </summary>
+            <param name="firstStageCount">Number of tries for the first stage</param>
+            <param name="firstStageDuration">Retry interval for the first stage</param>
+            <param name="secondStageCount">Number of tries for the second stage</param>
+            <param name="secondStageDuration">Retry interval for the second stage</param>
+            <param name="thirdStageDuration">Retry interval for the third stage</param>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.Core.Utils.ThreeStageBackoff.ShouldRetry(System.Int32,System.Exception,System.TimeSpan@)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IMessagingClient">
+            <summary>
+            Represents a client to the external interface
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.IoT.Agent.IoT.MessageWorker.Clients.IMessagingClient.SendMessage(Microsoft.Azure.IoT.Agent.Core.MessageWorker.AgentMessage,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Sends an <see cref="T:Microsoft.Azure.IoT.Agent.Core.MessageWorker.AgentMessage"/> through the external interface
+            </summary>
+            <param name="messageBody">The message to send</param>
+            <param name="messageProperties">Additional message properties</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
